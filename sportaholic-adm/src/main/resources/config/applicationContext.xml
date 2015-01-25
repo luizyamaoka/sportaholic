@@ -54,7 +54,4 @@
   </bean>
   <tx:annotation-driven transaction-manager="transactionManager" />
 
-  <bean id="uriService" class="com.sportaholic.service.impl.UriServiceImpl" />
-  <bean id="uriFilter" class="com.sportaholic.filter.UriFilter"/>
-
  </beans>
