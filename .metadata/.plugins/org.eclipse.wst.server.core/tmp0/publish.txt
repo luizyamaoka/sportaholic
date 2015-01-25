@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sun Jan 25 01:34:03 BRST 2015
+org.eclipse.jst.jee.server\:/binary\:/home/luizyamaoka/.m2/repository/org/springframework/spring-web/4.1.1.RELEASE/spring-web-4.1.1.RELEASE.jar=WEB-INF/lib/spring-web-4.1.1.RELEASE.jar
+org.eclipse.jst.j2ee.server\:sportaholic-core=WEB-INF/lib/sportaholic-core-0.0.1-SNAPSHOT.jar
