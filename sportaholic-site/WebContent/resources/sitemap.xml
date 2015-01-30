@@ -36,12 +36,22 @@
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-		<loc>http://www.sportaholic.com.br/natacao/tutoriais</loc>
+		<loc>http://www.sportaholic.com.br/natacao/dicas</loc>
 		<priority>0.8</priority>
 		<changefreq>weekly</changefreq>
 	</url>
 	<url>
-		<loc>http://www.sportaholic.com.br/natacao/avaliacoes</loc>
+		<loc>http://www.sportaholic.com.br/natacao/reviews</loc>
+		<priority>0.8</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.sportaholic.com.br/natacao/entrevistas</loc>
+		<priority>0.8</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.sportaholic.com.br/natacao/desafios</loc>
 		<priority>0.8</priority>
 		<changefreq>weekly</changefreq>
 	</url>
@@ -72,6 +82,11 @@
 	</url>
 	<url>
 		<loc>http://www.sportaholic.com.br/natacao-e-um-esporte-individual</loc>
+		<priority>0.8</priority>
+		<changefreq>weekly</changefreq>
+	</url>
+	<url>
+		<loc>http://www.sportaholic.com.br/desafio-30-dias-de-alongamento</loc>
 		<priority>0.8</priority>
 		<changefreq>weekly</changefreq>
 	</url>

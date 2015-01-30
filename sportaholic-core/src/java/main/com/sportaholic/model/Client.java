@@ -53,6 +53,9 @@ public class Client {
 	@Column(name="gender")
 	private String gender;
 	
+	@Column(name="is_administrator")
+	private Boolean isAdministrator;
+	
 	@OneToMany(mappedBy="client")
 	private List<Reading> readings;
 	
@@ -246,5 +249,13 @@ public class Client {
 
 	public void setProductComments(List<ProductComment> productComments) {
 		this.productComments = productComments;
+	}
+
+	public Boolean getIsAdministrator() {
+		return isAdministrator;
+	}
+
+	public void setIsAdministrator(Boolean isAdministrator) {
+		this.isAdministrator = isAdministrator;
 	}
 }

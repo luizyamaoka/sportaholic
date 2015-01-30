@@ -56,6 +56,7 @@ public class ClientServiceImpl implements ClientService {
 		
 		if (status.get(0).equals("success")) {
 			Client client = this.clientDtoToClient(clientDto);
+			client.setIsAdministrator(false);
 			client.setCreatedAt(Calendar.getInstance().getTime());
 			client.setUpdatedAt(Calendar.getInstance().getTime());
 			Integer id = this.clientDao.create(client);
