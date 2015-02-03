@@ -14,12 +14,10 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="/articles">Ver todos</a></li>
-            <li><a href="/articles/new">Criar novo</a></li>
+            <li><a href="/articles">Artigos</a></li>
           </ul>
         </li>
       </ul>

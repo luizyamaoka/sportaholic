@@ -1,5 +1,7 @@
 package com.sportaholic.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,12 @@ public class UriServiceImpl implements UriService {
 	public String getFriendlyUri(String uri) throws Exception {
 		Uri foundUri = this.uriDao.getByUri(uri);
 		return foundUri == null ? uri : foundUri.getFriendlyUri();
+	}
+
+	@Override
+	@Transactional
+	public List<Uri> getAll() throws Exception {
+		return this.uriDao.getAll();
 	}
 
 }

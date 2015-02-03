@@ -41,12 +41,12 @@
                 <input class="form-control btn btn-primary" type="submit" value="Entrar" />
               </div>
 		    </div>
-		    <div class="form-group">
+		    <!--<div class="form-group">
               <label for="forgotPasswordInput" class="control-label col-sm-4 col-xs-12"></label>
               <div class="col-sm-8 col-xs-12">
 			    <a class="btn btn-default form-control" href="/clients/forgot-password">Esqueci a senha</a>
 			  </div>
-		    </div>
+		    </div>-->
 		
           </form>
         </div>
