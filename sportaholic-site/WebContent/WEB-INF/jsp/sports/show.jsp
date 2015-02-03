@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
     <meta name="description" content="${activeUri.metaDescription}">
-    <title>${client.completeName}</title>
+    <title>${sport.name} | Sportaholic</title>
     <c:import url="/WEB-INF/jsp/shared/css.jsp" />
     <c:import url="/WEB-INF/jsp/shared/js.jsp" />
   </head>
