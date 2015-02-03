@@ -10,11 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.sportaholic.dao.ArticleDao;
+import com.sportaholic.dao.ArticleIsSportDao;
+import com.sportaholic.dao.ArticleIsTypeDao;
+import com.sportaholic.dao.UriDao;
 import com.sportaholic.dto.ArticleDto;
 import com.sportaholic.model.Article;
+import com.sportaholic.model.ArticleIsSport;
+import com.sportaholic.model.ArticleIsType;
 import com.sportaholic.model.Uri;
+import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.AdmArticleService;
-import com.sportaholic.service.UriService;
 import com.sportaholic.transformer.ArticleDtoTransformer;
 
 @Component
@@ -22,14 +27,18 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 
 	private ArticleDao articleDao;
 	private ArticleDtoTransformer articleDtoTransformer;
-	private UriService uriService;
+	private UriDao uriDao;
+	private ArticleIsSportDao articleIsSportDao;
+	private ArticleIsTypeDao articleIsTypeDao;
 	
 	@Autowired
 	public AdmArticleServiceImpl(ArticleDao articleDao, ArticleDtoTransformer articleDtoTransformer,
-			UriService uriService) {
+			UriDao uriDao, ArticleIsSportDao articleIsSportDao, ArticleIsTypeDao articleIsTypeDao) {
 		this.articleDao = articleDao;
 		this.articleDtoTransformer = articleDtoTransformer;
-		this.uriService = uriService;
+		this.uriDao = uriDao;
+		this.articleIsSportDao = articleIsSportDao;
+		this.articleIsTypeDao = articleIsTypeDao;
 	}
 	
 	@Override
@@ -42,6 +51,23 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 			article.setCreatedAt(Calendar.getInstance().getTime());
 			article.setUpdatedAt(Calendar.getInstance().getTime());
 			Integer articleId = this.articleDao.create(article);
+			
+			for (ArticleIsSport articleIsSport : article.getArticleIsSports()) {
+				articleIsSport.setCreatedAt(Calendar.getInstance().getTime());
+				this.articleIsSportDao.create(articleIsSport);
+			}
+			
+			for (ArticleIsType articleIsType : article.getArticleIsTypes()) {
+				articleIsType.setCreatedAt(Calendar.getInstance().getTime());
+				this.articleIsTypeDao.create(articleIsType);
+			}
+			
+			Uri uri = this.articleDtoTransformer.articleDtoToUri(articleDto);
+			uri.setUri(UrlConstants.URL_ARTICLE + "/" + articleId.toString());
+			uri.setCreatedAt(Calendar.getInstance().getTime());
+			uri.setUpdatedAt(Calendar.getInstance().getTime());
+			this.uriDao.create(uri);
+			
 			status.add(articleId.toString());
 		}
 		
@@ -59,10 +85,38 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 		}
 		
 		if (status.get(0).equals("success")) {
+			
+			// Delete all sports and articles types from article
+			Article oldArticle  = this.articleDao.get(articleDto.getId());
+			for (ArticleIsSport articleIsSport : oldArticle.getArticleIsSports()) {
+				this.articleIsSportDao.delete(articleIsSport);
+			}
+			
+			for (ArticleIsType articleIsType : oldArticle.getArticleIsTypes()) {
+				this.articleIsTypeDao.delete(articleIsType);
+			}
+			
+			// Save article info
 			Article article = this.articleDtoTransformer.articleDtoToArticle(articleDto);
 			article.setUpdatedAt(Calendar.getInstance().getTime());
 			this.articleDao.update(article);
 			status.add(articleDto.getId().toString());
+			
+			// Save article sports and article types
+			for (ArticleIsSport articleIsSport : article.getArticleIsSports()) {
+				articleIsSport.setCreatedAt(Calendar.getInstance().getTime());
+				this.articleIsSportDao.create(articleIsSport);
+			}
+			
+			for (ArticleIsType articleIsType : article.getArticleIsTypes()) {
+				articleIsType.setCreatedAt(Calendar.getInstance().getTime());
+				this.articleIsTypeDao.create(articleIsType);
+			}
+			
+			// Save uri
+			Uri uri = this.articleDtoTransformer.articleDtoToUri(articleDto);
+			uri.setUpdatedAt(Calendar.getInstance().getTime());
+			this.uriDao.update(uri);
 		}
 		
 		return status;
@@ -109,7 +163,7 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 			status.add("friendlyUri.containsSpaces");
 		}
 		if (articleDto.getFriendlyUri() != null) {
-			Uri uri = this.uriService.getByFriendlyUri(articleDto.getFriendlyUri());
+			Uri uri = this.uriDao.getByFriendlyUri(articleDto.getFriendlyUri());
 			if (uri != null && uri.getId() != articleDto.getUriId()) {
 				status.set(0, "error");
 				status.add("friendlyUri.existant");

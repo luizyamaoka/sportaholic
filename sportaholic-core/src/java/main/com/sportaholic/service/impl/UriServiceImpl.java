@@ -30,7 +30,7 @@ public class UriServiceImpl implements UriService {
 	@Override
 	@Transactional
 	public Uri getByFriendlyUri(String friendlyUri) throws Exception {
-		return this.uriDao.getByFrindlyUri(friendlyUri);
+		return this.uriDao.getByFriendlyUri(friendlyUri);
 	}
 
 	@Override

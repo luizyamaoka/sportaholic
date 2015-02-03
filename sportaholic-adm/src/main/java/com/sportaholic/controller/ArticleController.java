@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,7 +85,7 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ModelAndView show(@PathVariable Integer id) {
+	public ModelAndView show(@PathVariable Integer id, HttpServletRequest request) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("articles/edit");
 			
@@ -96,6 +98,11 @@ public class ArticleController {
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
 			modelAndView.addObject("uris", this.uriService.getAll());
 			
+			if(request.getParameter("success") != null)
+				modelAndView.addObject("successes", "<strong>Sucesso!</strong> Artigo criado com sucesso.");
+			if(request.getParameter("edited") != null)
+				modelAndView.addObject("successes", "<strong>Sucesso!</strong> Artigo editado com sucesso.");
+			
 			return modelAndView;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,8 +111,9 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.POST)
-	public String edit(ArticleDto articleDto, BindingResult result, Model m) {
+	public String edit(@PathVariable Integer id, ArticleDto articleDto, BindingResult result, Model m) {
 		try {			
+			articleDto.setId(id);
 			List<String> status = this.admArticleService.update(articleDto);
 			
 			if(status.get(0).equals("error")) {

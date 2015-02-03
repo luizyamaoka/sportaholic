@@ -26,7 +26,7 @@ public class UriDao extends GenericDao<Uri, Integer> {
 		return uri;
 	}
 	
-	public Uri getByFrindlyUri(String friendlyUri) throws Exception {
+	public Uri getByFriendlyUri(String friendlyUri) throws Exception {
 		Session session = null;
 		session = this.sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Uri.class);

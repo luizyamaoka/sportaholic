@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.sportaholic.dao.ArticleDao;
 import com.sportaholic.dao.ArticleTypeDao;
 import com.sportaholic.dao.AuthorDao;
 import com.sportaholic.dao.SportDao;
@@ -26,19 +27,22 @@ public class ArticleDtoTransformer {
 	private AuthorDao authorDao;
 	private ArticleTypeDao articleTypeDao;
 	private SportDao sportDao;
+	private ArticleDao articleDao;
 	
 	@Autowired
 	public ArticleDtoTransformer(UriDao uriDao, AuthorDao authorDao,
-			ArticleTypeDao articleTypeDao, SportDao sportDao) {
+			ArticleTypeDao articleTypeDao, SportDao sportDao, ArticleDao articleDao) {
 		this.uriDao = uriDao;
 		this.authorDao = authorDao;
 		this.articleTypeDao = articleTypeDao;
 		this.sportDao = sportDao;
+		this.articleDao = articleDao;
 	}
 	
 	@Transactional
 	public Article articleDtoToArticle(ArticleDto articleDto) throws Exception {
-		Article article = new Article();
+		Article article = articleDto.getId() == null ? new Article() : this.articleDao.get(articleDto.getId());
+		
 		article.setId(articleDto.getId());
 		article.setTitle(articleDto.getTitle());
 		article.setSubtitle(articleDto.getSubtitle());
@@ -64,6 +68,18 @@ public class ArticleDtoTransformer {
 		article.setArticleIsTypes(articleIsTypes);
 		
 		return article;
+	}
+	
+	@Transactional
+	public Uri articleDtoToUri(ArticleDto articleDto) throws Exception {
+		Uri uri = articleDto.getUriId() == null ? new Uri() : this.uriDao.get(articleDto.getUriId());
+		
+		uri.setFriendlyUri(articleDto.getFriendlyUri());
+		uri.setName(articleDto.getName());
+		uri.setMetaDescription(articleDto.getMetaDescription());
+		uri.setParent(this.uriDao.get(articleDto.getParentId()));
+		
+		return uri;
 	}
 	
 	@Transactional
