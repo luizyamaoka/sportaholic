@@ -16,28 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sportaholic.dto.AuthorDto;
-import com.sportaholic.model.Author;
+import com.sportaholic.dto.SportDto;
+import com.sportaholic.model.Sport;
 import com.sportaholic.model.UrlConstants;
-import com.sportaholic.service.AdmAuthorService;
-import com.sportaholic.service.AuthorService;
+import com.sportaholic.service.AdmSportService;
+import com.sportaholic.service.SportService;
 import com.sportaholic.service.UriService;
-import com.sportaholic.transformer.AuthorDtoTransformer;
+import com.sportaholic.transformer.SportDtoTransformer;
 
 @Controller
-@RequestMapping(UrlConstants.URL_AUTHOR)
-public class AuthorController {
+@RequestMapping(UrlConstants.URL_SPORT)
+public class SportController {
 
-	private AuthorService authorService;
+	private SportService sportService;
 	private UriService uriService;
-	private AuthorDtoTransformer authorDtoTransformer;
-	private AdmAuthorService admAuthorService;
+	private AdmSportService admSportService;
+	private SportDtoTransformer sportDtoTransformer;
 	
 	private static final Map<String, String> ERROR_MESSAGES;
 	static {
 		ERROR_MESSAGES = new HashMap<String, String>();
 		ERROR_MESSAGES.put("name.required", "O nome do autor precisa ser fornecido.");
 		ERROR_MESSAGES.put("description.required", "A descrição do autor precisa ser fornecida");
+		ERROR_MESSAGES.put("banner.required", "O banner precisa ser fornecido");
 		ERROR_MESSAGES.put("friendlyUri.required", "A url amigável precisa ser preenchida.");
 		ERROR_MESSAGES.put("friendlyUri.startsWithSlash", "A url amigável precisa começar com /");
 		ERROR_MESSAGES.put("friendlyUri.containsSpaces", "A url amigável nao pode conter espaços");
@@ -45,26 +46,24 @@ public class AuthorController {
 		ERROR_MESSAGES.put("urName.required", "O nome da url precisa ser preenchido.");
 		ERROR_MESSAGES.put("parentId.required", "Selecione a url pai.");
 		ERROR_MESSAGES.put("metaDescription.required", "A meta description precisa ser preenchida.");
-		
 	}
 	
 	@Autowired
-	public AuthorController(AuthorService authorService, UriService uriService, 
-			AuthorDtoTransformer authorDtoTransformer, AdmAuthorService admAuthorService) {
-		this.authorService = authorService;
+	public SportController(SportService sportService, UriService uriService, 
+			AdmSportService admSportService, SportDtoTransformer sportDtoTransformer) {
+		this.sportService = sportService;
 		this.uriService = uriService;
-		this.authorDtoTransformer = authorDtoTransformer;
-		this.admAuthorService = admAuthorService;
+		this.admSportService = admSportService;
+		this.sportDtoTransformer = sportDtoTransformer;
 	}
 	
 	@RequestMapping("")
 	public ModelAndView index() {
 		try {
-			ModelAndView modelAndView = new ModelAndView("authors/index");
-			
-			modelAndView.addObject("authors", this.authorService.getAll());
-			
+			ModelAndView modelAndView = new ModelAndView("sports/index");
+			modelAndView.addObject("sports", this.sportService.getAll());
 			return modelAndView;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ModelAndView("errors/unexpected-error");
@@ -74,18 +73,18 @@ public class AuthorController {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ModelAndView show(@PathVariable Integer id, HttpServletRequest request) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("authors/edit");
+			ModelAndView modelAndView = new ModelAndView("sports/edit");
 			
-			Author author = this.authorService.get(id);
-			AuthorDto authorDto = this.authorDtoTransformer.authorToAuthorDto(author);
-			modelAndView.addObject("authorDto", authorDto);
+			Sport sport = this.sportService.get(id);
+			SportDto sportDto = this.sportDtoTransformer.sportToSportDto(sport);
+			modelAndView.addObject("sportDto", sportDto);
 			
 			modelAndView.addObject("uris", this.uriService.getAll());
 			
 			if(request.getParameter("success") != null)
-				modelAndView.addObject("successes", "<strong>Sucesso!</strong> Autor criado com sucesso.");
+				modelAndView.addObject("successes", "<strong>Sucesso!</strong> Esporte criado com sucesso.");
 			if(request.getParameter("edited") != null)
-				modelAndView.addObject("successes", "<strong>Sucesso!</strong> Autor editado com sucesso.");
+				modelAndView.addObject("successes", "<strong>Sucesso!</strong> Esporte editado com sucesso.");
 			
 			return modelAndView;
 		} catch (Exception e) {
@@ -95,10 +94,10 @@ public class AuthorController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.POST)
-	public String edit(@PathVariable Integer id, AuthorDto authorDto, BindingResult result, Model m) {
+	public String edit(@PathVariable Integer id, SportDto sportDto, BindingResult result, Model m) {
 		try {			
-			authorDto.setId(id);
-			List<String> status = this.admAuthorService.update(authorDto);
+			sportDto.setId(id);
+			List<String> status = this.admSportService.update(sportDto);
 			
 			if(status.get(0).equals("error")) {
 	        	List<String> errors = new ArrayList<String>();
@@ -108,10 +107,10 @@ public class AuthorController {
 	        	
 				m.addAttribute("uris", this.uriService.getAll());
 	        	
-	            return "authors/edit";
+	            return "sports/edit";
 	        }
 			
-			return "redirect:" + UrlConstants.URL_AUTHOR + "/" + status.get(1) + "?edited";
+			return "redirect:" + UrlConstants.URL_SPORT + "/" + status.get(1) + "?edited";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";
@@ -121,8 +120,8 @@ public class AuthorController {
 	@RequestMapping(value="/new", method=RequestMethod.GET)
 	public ModelAndView newForm() {
 		try {
-			ModelAndView modelAndView = new ModelAndView("authors/new");
-			modelAndView.addObject("authorDto", new AuthorDto());
+			ModelAndView modelAndView = new ModelAndView("sports/new");
+			modelAndView.addObject("sportDto", new SportDto());
 			
 			modelAndView.addObject("uris", this.uriService.getAll());
 			
@@ -134,9 +133,9 @@ public class AuthorController {
 	}
 	
 	@RequestMapping(value="/new", method=RequestMethod.POST)
-	public String insert(AuthorDto authorDto, BindingResult result, Model m) {
+	public String insert(SportDto sportDto, BindingResult result, Model m) {
 		try {			
-			List<String> status = this.admAuthorService.create(authorDto);
+			List<String> status = this.admSportService.create(sportDto);
 			
 			if(status.get(0).equals("error")) {
 	        	List<String> errors = new ArrayList<String>();
@@ -147,10 +146,10 @@ public class AuthorController {
 	        	
 				m.addAttribute("uris", this.uriService.getAll());
 	        	
-	            return "authors/new";
+	            return "sports/new";
 	        }
 			
-			return "redirect:" + UrlConstants.URL_AUTHOR + "/" + status.get(1) + "?success";
+			return "redirect:" + UrlConstants.URL_SPORT + "/" + status.get(1) + "?success";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";

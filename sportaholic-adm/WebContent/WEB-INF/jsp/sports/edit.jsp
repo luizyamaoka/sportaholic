@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
-    <title>Novo artigo</title>
+    <title>${sportDto.name}</title>
     <c:import url="/WEB-INF/jsp/shared/js.jsp" />
     <c:import url="/WEB-INF/jsp/shared/css.jsp" />
   </head>
@@ -16,10 +16,10 @@
     <c:import url="/WEB-INF/jsp/shared/alert.jsp" />
 
 	<div class="page-header">
-      <h1>Criar um novo autor</h1>
+      <h1>${sportDto.name}</h1>
     </div>
           
-    <c:import url="/WEB-INF/jsp/authors/_form.jsp" />
+    <c:import url="/WEB-INF/jsp/sports/_form.jsp" />
             
     </div>
     

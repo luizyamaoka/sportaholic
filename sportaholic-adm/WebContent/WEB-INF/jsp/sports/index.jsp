@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
-    <title>Novo artigo</title>
+    <title>Autores</title>
     <c:import url="/WEB-INF/jsp/shared/js.jsp" />
     <c:import url="/WEB-INF/jsp/shared/css.jsp" />
   </head>
@@ -16,10 +16,19 @@
     <c:import url="/WEB-INF/jsp/shared/alert.jsp" />
 
 	<div class="page-header">
-      <h1>Criar um novo autor</h1>
+      <h1>Esportes</h1>
     </div>
-          
-    <c:import url="/WEB-INF/jsp/authors/_form.jsp" />
+
+    <p>
+      <a href="/sports/new" class="btn btn-success btn-sm">Novo esporte</a>
+    </p>
+
+      <c:forEach var="sport" items="${sports}">
+        <p>
+          <a href="/sports/${sport.id}" class="btn btn-warning btn-xs">Editar</a>
+          ${sport.name}
+        </p>
+      </c:forEach>
             
     </div>
     
