@@ -12,6 +12,9 @@
    </property>
 
    <!-- Assume test is the database name -->
+   <!--<property name="hibernate.connection.url">
+      jdbc:postgresql://54.149.164.253:5432/sportaholic
+   </property>-->
    <property name="hibernate.connection.url">
       jdbc:postgresql://localhost:5432/sportaholic
    </property>

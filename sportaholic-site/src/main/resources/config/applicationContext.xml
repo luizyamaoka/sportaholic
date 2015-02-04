@@ -28,7 +28,7 @@
 
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
   	p:driverClassName="org.postgresql.Driver" 
-  	p:url="jdbc:postgresql://localhost:5432/sportaholic" p:username="sportaholic" p:password="sportaholic" />
+  	p:url="jdbc:postgresql://54.149.164.253:5432/sportaholic" p:username="sportaholic" p:password="sportaholic" />
 
   <!-- Hibernate Session Factory From Analytics DB -->
   <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" id="sessionFactory">
