@@ -32,7 +32,7 @@ public class SportController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("sports/show");
 			modelAndView.addObject("sport", this.sportService.get(id));
-			modelAndView.addObject("articles", this.articleService.getBySet(id, null));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySet(id, null));
 			modelAndView.addObject("sports", this.sportService.getAll());
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
 			return modelAndView;
@@ -46,7 +46,7 @@ public class SportController {
 	public ModelAndView getArticles(@PathVariable Integer id) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("articles/index");
-			modelAndView.addObject("articles", this.articleService.getBySet(id, null));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySet(id, null));
 			modelAndView.addObject("sports", this.sportService.getAll());
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
 			
@@ -61,7 +61,7 @@ public class SportController {
 	public ModelAndView getArticleTypes(@PathVariable Integer id, @PathVariable Integer articleTypeId) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("articles/index");
-			modelAndView.addObject("articles", this.articleService.getBySet(id, articleTypeId));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySet(id, articleTypeId));
 			modelAndView.addObject("sports", this.sportService.getAll());
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
 			

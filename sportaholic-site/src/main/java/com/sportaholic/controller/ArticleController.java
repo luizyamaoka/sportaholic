@@ -76,7 +76,7 @@ public class ArticleController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("articles/index");
 			
-			modelAndView.addObject("articles", this.articleService.getBySet(sportId, articleTypeId));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySet(sportId, articleTypeId));
 			modelAndView.addObject("sports", this.sportService.getAll());
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
 			return modelAndView;

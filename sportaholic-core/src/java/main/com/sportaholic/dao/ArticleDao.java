@@ -1,5 +1,6 @@
 package com.sportaholic.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -23,7 +24,7 @@ public class ArticleDao extends GenericDao<Article, Integer> {
 		super(sessionFactory, Article.class);
 	}
 
-	public List<Article> getBySet(Integer sportId, Integer articleTypeId) {
+	public List<Article> getPublishedBySet(Integer sportId, Integer articleTypeId) {
 		Session session = null;
 		session = this.sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Article.class);
@@ -51,7 +52,8 @@ public class ArticleDao extends GenericDao<Article, Integer> {
 			}
 		}
 		
-		criteria.addOrder(Order.desc("createdAt"));
+		criteria.add(Restrictions.le("publishedAt", Calendar.getInstance().getTime()));
+		criteria.addOrder(Order.desc("publishedAt"));
 		
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		@SuppressWarnings("unchecked")

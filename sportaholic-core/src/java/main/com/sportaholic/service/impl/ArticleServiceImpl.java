@@ -39,9 +39,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	@Transactional
-	public List<Article> getBySet(Integer sportId, Integer articleTypeId)
+	public List<Article> getPublishedBySet(Integer sportId, Integer articleTypeId)
 			throws Exception {
-		return this.articleDao.getBySet(sportId, articleTypeId);
+		return this.articleDao.getPublishedBySet(sportId, articleTypeId);
 	}
 
 }

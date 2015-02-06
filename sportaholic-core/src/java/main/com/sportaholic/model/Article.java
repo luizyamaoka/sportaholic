@@ -38,6 +38,9 @@ public class Article {
 	@Column(name="content")
 	private String content;
 	
+	@Column(name="published_at")
+	private Date publishedAt;
+	
 	@ManyToOne
 	@JoinColumn(name="author_id")
 	private Author author;
@@ -145,6 +148,14 @@ public class Article {
 	@Transient
 	public String getUri() {
 		return UrlConstants.URL_ARTICLE + "/" + this.id;
+	}
+
+	public Date getPublishedAt() {
+		return publishedAt;
+	}
+
+	public void setPublishedAt(Date publishedAt) {
+		this.publishedAt = publishedAt;
 	}
 	
 }

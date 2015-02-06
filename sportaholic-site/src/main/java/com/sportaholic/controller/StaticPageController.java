@@ -29,7 +29,7 @@ public class StaticPageController {
 			if(request.getParameter("success") != null)
 				modelAndView.addObject("successes", "<strong>Bem-vindo!</strong> Login efetuado com sucesso.");
 			
-			modelAndView.addObject("articles", this.articleService.getBySet(null, null));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySet(null, null));
 			
 			return modelAndView;
 		} catch (Exception e) {
