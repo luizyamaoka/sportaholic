@@ -20,6 +20,7 @@
             <li><a href="/articles">Artigos</a></li>
             <li><a href="/authors">Autores</a></li>
             <li><a href="/sports">Esportes</a></li>
+            <li><a href="/article-types">Tipos de artigo</a></li>
           </ul>
         </li>
       </ul>

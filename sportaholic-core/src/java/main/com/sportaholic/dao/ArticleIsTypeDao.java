@@ -13,5 +13,5 @@ public class ArticleIsTypeDao extends GenericDao<ArticleIsType, Integer> {
 	public ArticleIsTypeDao(SessionFactory sessionFactory) {
 		super(sessionFactory, ArticleIsType.class);
 	}
-
+	
 }
