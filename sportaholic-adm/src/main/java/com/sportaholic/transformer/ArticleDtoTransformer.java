@@ -3,6 +3,7 @@ package com.sportaholic.transformer;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.transaction.Transactional;
 
@@ -100,6 +101,7 @@ public class ArticleDtoTransformer {
 		if (article.getPublishedAt() != null) {
 			Calendar cal = Calendar.getInstance();
 		    cal.setTime(article.getPublishedAt());
+		    cal.setTimeZone(TimeZone.getTimeZone("Brazil/East"));
 		    articleDto.setPublishedAtDay(cal.get(Calendar.DAY_OF_MONTH));
 		    articleDto.setPublishedAtMonth(cal.get(Calendar.MONTH) + 1);
 		    articleDto.setPublishedAtYear(cal.get(Calendar.YEAR));
