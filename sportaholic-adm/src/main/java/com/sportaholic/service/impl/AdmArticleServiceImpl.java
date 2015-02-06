@@ -142,6 +142,46 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 			status.set(0, "error");
 			status.add("author.required");
 		}
+		if (articleDto.getPublishedAtYear() == null) {
+			status.set(0, "error");
+			status.add("publishedAtYear.required");
+		}
+		if (articleDto.getPublishedAtMonth() == null) {
+			status.set(0, "error");
+			status.add("publishedAtMonth.required");
+		} else {
+			if (articleDto.getPublishedAtMonth() < 1 || articleDto.getPublishedAtMonth() > 12) {
+				status.set(0, "error");
+				status.add("publishedAtMonth.impossible");
+			}
+		}
+		if (articleDto.getPublishedAtDay() == null) {
+			status.set(0, "error");
+			status.add("publishedAtDay.required");
+		} else {
+			if (articleDto.getPublishedAtDay() < 1 || articleDto.getPublishedAtDay() > 31) {
+				status.set(0, "error");
+				status.add("publishedAtDay.impossible");
+			}
+		}
+		if (articleDto.getPublishedAtHour() == null) {
+			status.set(0, "error");
+			status.add("publishedAtHour.required");
+		} else {
+			if (articleDto.getPublishedAtHour() < 0 || articleDto.getPublishedAtHour() > 23) {
+				status.set(0, "error");
+				status.add("publishedAtHour.impossible");
+			}
+		}
+		if (articleDto.getPublishedAtMinute() == null) {
+			status.set(0, "error");
+			status.add("publishedAtMinute.required");
+		} else {
+			if (articleDto.getPublishedAtMinute() < 0 || articleDto.getPublishedAtMinute() > 59) {
+				status.set(0, "error");
+				status.add("publishedAtMinute.impossible");
+			}
+		}
 		if (articleDto.getSportIds() == null || articleDto.getSportIds().size() == 0) {
 			status.set(0, "error");
 			status.add("sports.required");

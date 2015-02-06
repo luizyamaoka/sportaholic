@@ -1,6 +1,7 @@
 package com.sportaholic.transformer;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,7 @@ import com.sportaholic.dao.AuthorDao;
 import com.sportaholic.dao.SportDao;
 import com.sportaholic.dao.UriDao;
 import com.sportaholic.dto.ArticleDto;
+import com.sportaholic.helper.Helper;
 import com.sportaholic.model.Article;
 import com.sportaholic.model.ArticleIsSport;
 import com.sportaholic.model.ArticleIsType;
@@ -48,6 +50,9 @@ public class ArticleDtoTransformer {
 		article.setSubtitle(articleDto.getSubtitle());
 		article.setContent(articleDto.getContent());
 		article.setAuthor(this.authorDao.get(articleDto.getAuthorId()));
+		article.setPublishedAt(Helper.buildDate(articleDto.getPublishedAtYear(), 
+				articleDto.getPublishedAtMonth(), articleDto.getPublishedAtDay(), 
+				articleDto.getPublishedAtHour(), articleDto.getPublishedAtMinute()));
 		
 		List<ArticleIsSport> articleIsSports = new ArrayList<ArticleIsSport>();
 		for (Integer sportId : articleDto.getSportIds()) {
@@ -91,6 +96,16 @@ public class ArticleDtoTransformer {
 		articleDto.setSubtitle(article.getSubtitle());
 		articleDto.setContent(article.getContent());
 		articleDto.setAuthorId(article.getAuthor().getId());
+		
+		if (article.getPublishedAt() != null) {
+			Calendar cal = Calendar.getInstance();
+		    cal.setTime(article.getPublishedAt());
+		    articleDto.setPublishedAtDay(cal.get(Calendar.DAY_OF_MONTH));
+		    articleDto.setPublishedAtMonth(cal.get(Calendar.MONTH) + 1);
+		    articleDto.setPublishedAtYear(cal.get(Calendar.YEAR));
+		    articleDto.setPublishedAtHour(cal.get(Calendar.HOUR_OF_DAY));
+		    articleDto.setPublishedAtMinute(cal.get(Calendar.MINUTE));
+		}
 		
 		List<Integer> sportIds = new ArrayList<Integer>();
 		for(ArticleIsSport articleIsSport : article.getArticleIsSports())

@@ -41,7 +41,7 @@
 	    
 	    <div class="author">
 	      Por <a href="${uriService.getFriendlyUri(article.author.uri)}">${article.author.name}</a>
-	      em <fmt:formatDate value="${article.createdAt}" pattern="dd/MM/yyyy HH:mm" timeZone="Brazil/East"/>
+	      em <fmt:formatDate value="${article.publishedAt}" pattern="dd/MM/yyyy HH:mm" timeZone="Brazil/East"/>
 	    </div>
 	    <br />
 	    <div class="fb-like" data-href="http://www.sportaholic.com.br${uriService.getFriendlyUri(article.uri)}" 

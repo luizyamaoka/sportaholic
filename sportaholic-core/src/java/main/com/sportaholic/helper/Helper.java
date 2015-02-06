@@ -8,13 +8,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.TimeZone;
 
 import com.sportaholic.model.Uri;
 
 public class Helper {
 
 	public static Date buildDate(int year, int month, int day, Integer hour, Integer minute) {
-		Calendar cal = Calendar.getInstance();
+		Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Brazil/East"));
 		if (hour == null || minute == null)
 			cal.set(year, month-1, day);
 		else 

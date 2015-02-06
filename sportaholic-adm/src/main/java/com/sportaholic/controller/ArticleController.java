@@ -47,6 +47,15 @@ public class ArticleController {
 		ERROR_MESSAGES.put("subtitle.required", "O subtítulo precisa ser preenchido.");
 		ERROR_MESSAGES.put("content.required", "O conteúdo precisa ser preenchido.");
 		ERROR_MESSAGES.put("author.required", "Selecione o autor do artigo.");
+		ERROR_MESSAGES.put("publishedAtYear.required", "O ano da publicação precisa ser preenchido");
+		ERROR_MESSAGES.put("publishedAtMonth.required", "O mês da publicação precisa ser preenchido");
+		ERROR_MESSAGES.put("publishedAtDay.required", "O dia da publicação precisa ser preenchido");
+		ERROR_MESSAGES.put("publishedAtHour.required", "A hora da publicação precisa ser preenchido");
+		ERROR_MESSAGES.put("publishedAtMinute.required", "O minuto da publicação precisa ser preenchido");
+		ERROR_MESSAGES.put("publishedAtMonth.impossible", "O mês da publicação precisa estar entre 1 e 12");
+		ERROR_MESSAGES.put("publishedAtDay.impossible", "O dia da publicação precisa estar entre 1 e 31");
+		ERROR_MESSAGES.put("publishedAtHour.impossible", "A hora da publicação precisa estar entre 0 e 23");
+		ERROR_MESSAGES.put("publishedAtMinute.impossible", "O minuto da publicação precisa estar entre 0 e 59");
 		ERROR_MESSAGES.put("sports.required", "Selecione pelo menos 1 esporte para este artigo.");
 		ERROR_MESSAGES.put("articleTypes.required", "Selecione pelo menos 1 tipo de artigo.");
 		ERROR_MESSAGES.put("friendlyUri.required", "A url amigável precisa ser preenchida.");

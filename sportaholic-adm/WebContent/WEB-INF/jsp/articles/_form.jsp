@@ -33,6 +33,28 @@
 			</div>
 		  </div>
 		  <div class="form-group">
+		    <label for="publishedAtInput" class="control-label col-sm-4 col-xs-12">Data da publicação * </label>
+            <div class="col-sm-8 col-xs-12">
+              <div class="input-group">
+			    <form:input path="publishedAtDay" class="form-control" id="publishedAtDayInput" placeholder="DD" required="true" />
+			    <span class="input-group-addon">/</span>
+			    <form:input path="publishedAtMonth" class="form-control" id="publishedAtMonthInput" placeholder="MM" required="true" />
+			    <span class="input-group-addon">/</span>
+			    <form:input path="publishedAtYear" class="form-control" id="publishedAtYearInput" placeholder="YYYY" required="true" />
+			  </div>
+			</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="publishedAtInput" class="control-label col-sm-4 col-xs-12">Horário da publicação * </label>
+            <div class="col-sm-8 col-xs-12">
+              <div class="input-group">
+			    <form:input path="publishedAtHour" class="form-control" id="publishedAtHourInput" placeholder="HH" required="true" />
+			    <span class="input-group-addon">:</span>
+			    <form:input path="publishedAtMinute" class="form-control" id="publishedAtMinuteInput" placeholder="mm" required="true" />
+			  </div>
+			</div>
+		  </div>
+		  <div class="form-group">
             <label for="sportIdsCheckbox" class="control-label col-sm-4 col-xs-12">Esportes * </label>
             <div class="col-sm-8 col-xs-12">
 			  <c:forEach var="sport" items="${sports}">

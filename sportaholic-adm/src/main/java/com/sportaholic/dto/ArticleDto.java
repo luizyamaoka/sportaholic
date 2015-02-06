@@ -9,6 +9,11 @@ public class ArticleDto {
 	private String subtitle;
 	private String content;
 	private Integer authorId;
+	private Integer publishedAtDay;
+	private Integer publishedAtMonth;
+	private Integer publishedAtYear;
+	private Integer publishedAtHour;
+	private Integer publishedAtMinute;
 	private List<Integer> sportIds;
 	private List<Integer> articleTypeIds;
 	
@@ -90,7 +95,35 @@ public class ArticleDto {
 	public void setUriId(Integer uriId) {
 		this.uriId = uriId;
 	}
-	
-	
+	public Integer getPublishedAtDay() {
+		return publishedAtDay;
+	}
+	public void setPublishedAtDay(Integer publishedAtDay) {
+		this.publishedAtDay = publishedAtDay;
+	}
+	public Integer getPublishedAtMonth() {
+		return publishedAtMonth;
+	}
+	public void setPublishedAtMonth(Integer publishedAtMonth) {
+		this.publishedAtMonth = publishedAtMonth;
+	}
+	public Integer getPublishedAtYear() {
+		return publishedAtYear;
+	}
+	public void setPublishedAtYear(Integer publishedAtYear) {
+		this.publishedAtYear = publishedAtYear;
+	}
+	public Integer getPublishedAtHour() {
+		return publishedAtHour;
+	}
+	public void setPublishedAtHour(Integer publishedAtHour) {
+		this.publishedAtHour = publishedAtHour;
+	}
+	public Integer getPublishedAtMinute() {
+		return publishedAtMinute;
+	}
+	public void setPublishedAtMinute(Integer publishedAtMinute) {
+		this.publishedAtMinute = publishedAtMinute;
+	}
 	
 }
