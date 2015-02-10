@@ -10,6 +10,8 @@ public interface ArticleService {
 	
 	public Article getEager(int id) throws Exception;
 	
+	public List<Article> getAll() throws Exception;
+	
 	public List<Article> getPublishedBySet(Integer sportId, Integer articleTypeId) throws Exception;
 	
 }

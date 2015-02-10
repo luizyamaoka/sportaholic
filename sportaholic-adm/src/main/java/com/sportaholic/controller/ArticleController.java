@@ -85,7 +85,7 @@ public class ArticleController {
 	public ModelAndView getAll() {
 		try {
 			ModelAndView modelAndView = new ModelAndView("articles/index");
-			modelAndView.addObject("articles", this.articleService.getPublishedBySet(null, null));
+			modelAndView.addObject("articles", this.articleService.getAll());
 			return modelAndView;
 		} catch (Exception e) {
 			e.printStackTrace();

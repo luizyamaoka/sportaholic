@@ -61,4 +61,14 @@ public class ArticleDao extends GenericDao<Article, Integer> {
 		return articles;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Article> getAll() throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Article.class);
+		criteria.addOrder(Order.desc("publishedAt"));
+		List<Article> objects = criteria.list();
+		return objects;
+	}
+	
 }

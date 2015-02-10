@@ -44,4 +44,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return this.articleDao.getPublishedBySet(sportId, articleTypeId);
 	}
 
+	@Override
+	@Transactional
+	public List<Article> getAll() throws Exception {
+		return this.articleDao.getAll();
+	}
+
 }
