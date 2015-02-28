@@ -109,6 +109,36 @@ body {
   overflow: hidden;
 }
 
+.product-carousel {
+  height: 400px;
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: all .2s ease-in-out;
+}
+
+.product-carousel > .product-image {
+  width: 100%; 
+  max-width: 200px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.product-carousel > .product-info > h4 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.product-carousel > .product-info > p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .jumbotron {
   padding-bottom: 70px;  
 }
@@ -252,5 +282,22 @@ body {
 #footer-social > li > a {
   float: left;
 }
+
+#brand-logo {
+  max-width: 200px; 
+  width: 100%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+#brand-info {
+  text-align: left;
+}
+@media screen and (max-width: 48em){
+    #brand-info{
+        text-align: center;
+    }
+}
+
 
 </style>

@@ -1,0 +1,25 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<div class="row">
+  <c:if test="${empty products}">
+    <div class="jumbotron">
+      <p>Nenhum produto encontrado</p>
+    </div>
+  </c:if>
+  <c:forEach var="product" items="${products}">
+    <div class="col-sm-6 col-md-4">
+      <div class="product-carousel">
+        <img class="product-image" src="http://placehold.it/200x200" data-holder-rendered="true">
+        <div class="product-info">
+          <h4>${product.brand.name}<br />${product.name}</h4>
+          <p class="product-price">
+            R$ <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0.00" minFractionDigits="2" maxFractionDigits="2"/>
+          </p>
+        </div>
+        <p style="text-align: center;"><a href="${uriService.getFriendlyUri(product.uri)}" class="btn-medium" role="button">Comprar</a></p>
+      </div>
+    </div>
+  </c:forEach>
+</div>
+

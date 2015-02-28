@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name=DomainConstants.TB_PRODUCT)
@@ -175,6 +176,9 @@ public class Product {
 		this.productComments = productComments;
 	}
 	
-	
+	@Transient
+	public String getUri() {
+		return UrlConstants.URL_PRODUCT + "/" + this.id;
+	}
 	
 }
