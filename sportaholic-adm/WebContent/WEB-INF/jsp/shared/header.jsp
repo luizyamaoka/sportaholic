@@ -22,6 +22,7 @@
             <li><a href="/sports">Esportes</a></li>
             <li><a href="/article-types">Tipos de artigo</a></li>
             <li><a href="/brands">Marcas</a></li>
+            <li><a href="/product-categories">Categorias de produtos</a></li>
           </ul>
         </li>
       </ul>
