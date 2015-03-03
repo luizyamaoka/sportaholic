@@ -15,12 +15,17 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Blog <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/articles">Artigos</a></li>
             <li><a href="/authors">Autores</a></li>
             <li><a href="/sports">Esportes</a></li>
             <li><a href="/article-types">Tipos de artigo</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Loja <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
             <li><a href="/brands">Marcas</a></li>
             <li><a href="/product-categories">Categorias de produtos</a></li>
           </ul>
