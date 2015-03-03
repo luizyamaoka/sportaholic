@@ -96,7 +96,7 @@ public class ProductCategoryController {
 	            return "product-categories/edit";
 	        }
 			
-			return "redirect:" + UrlConstants.URL_PRODUCT_CATEGORY + "/" + status.get(1) + "?edited";
+			return "redirect:" + UrlConstants.URL_PRODUCT_CATEGORY + "/" + id + "?edited";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";

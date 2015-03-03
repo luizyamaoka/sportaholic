@@ -97,7 +97,7 @@ public class ProductTypeController {
 	            return "product-types/edit";
 	        }
 			
-			return "redirect:" + UrlConstants.URL_PRODUCT_TYPE + "/" + status.get(1) + "?edited";
+			return "redirect:" + UrlConstants.URL_PRODUCT_TYPE + "/" + id + "?edited";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";

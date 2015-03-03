@@ -92,7 +92,7 @@ public class ArticleTypeController {
 	            return "article-types/edit";
 	        }
 			
-			return "redirect:" + UrlConstants.URL_ARTICLE_TYPE + "/" + status.get(1) + "?edited";
+			return "redirect:" + UrlConstants.URL_ARTICLE_TYPE + "/" + id + "?edited";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";
