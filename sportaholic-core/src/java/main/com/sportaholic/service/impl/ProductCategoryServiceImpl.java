@@ -72,7 +72,8 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 			status.add("name.required");
 		} else {
 			ProductCategory existantArticleType = this.productCategoryDao.getByName(productCategory.getName());
-			if (existantArticleType != null && productCategory.getId() != existantArticleType.getId()) {
+			if (existantArticleType != null && productCategory.getId() != existantArticleType.getId()
+					&& productCategory.getSport() == existantArticleType.getSport()) {
 				status.set(0, "error");
 				status.add("name.existant");
 			}

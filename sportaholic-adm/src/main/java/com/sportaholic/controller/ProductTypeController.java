@@ -16,20 +16,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sportaholic.dto.ProductCategoryDto;
-import com.sportaholic.model.ProductCategory;
+import com.sportaholic.dto.ProductTypeDto;
+import com.sportaholic.model.ProductType;
 import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.ProductCategoryService;
-import com.sportaholic.service.SportService;
-import com.sportaholic.transformer.ProductCategoryDtoTransformer;
+import com.sportaholic.service.ProductTypeService;
+import com.sportaholic.transformer.ProductTypeDtoTransformer;
 
 @Controller
-@RequestMapping(UrlConstants.URL_PRODUCT_CATEGORY)
-public class ProductCategoryController {
-
+@RequestMapping(UrlConstants.URL_PRODUCT_TYPE)
+public class ProductTypeController {
+	
+	private ProductTypeService productTypeService;
 	private ProductCategoryService productCategoryService;
-	private ProductCategoryDtoTransformer productCategoryDtoTransformer;
-	private SportService sportService;
+	private ProductTypeDtoTransformer productTypeDtoTransformer; 
 	
 	private static final Map<String, String> ERROR_MESSAGES;
 	static {
@@ -39,18 +39,19 @@ public class ProductCategoryController {
 	}
 	
 	@Autowired
-	public ProductCategoryController(ProductCategoryService productCategoryService,
-			ProductCategoryDtoTransformer productCategoryDtoTransformer, SportService sportService) {
+	public ProductTypeController(ProductTypeService productTypeService,
+			ProductCategoryService productCategoryService,
+			ProductTypeDtoTransformer productTypeDtoTransformer) {
+		this.productTypeService = productTypeService;
 		this.productCategoryService = productCategoryService;
-		this.productCategoryDtoTransformer = productCategoryDtoTransformer;
-		this.sportService = sportService;
+		this.productTypeDtoTransformer = productTypeDtoTransformer;
 	}
 	
 	@RequestMapping("")
 	public ModelAndView index() {
 		try {
-			ModelAndView modelAndView = new ModelAndView("product-categories/index");
-			modelAndView.addObject("productCategories", this.productCategoryService.getAll());
+			ModelAndView modelAndView = new ModelAndView("product-types/index");
+			modelAndView.addObject("productTypes", this.productTypeService.getAll());
 			return modelAndView;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,12 +62,12 @@ public class ProductCategoryController {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ModelAndView show(@PathVariable Integer id, HttpServletRequest request) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("product-categories/edit");
+			ModelAndView modelAndView = new ModelAndView("product-types/edit");
 			
-			ProductCategory productCategory = this.productCategoryService.get(id);
-			ProductCategoryDto productCategoryDto = this.productCategoryDtoTransformer.productCategoryToProductCategoryDto(productCategory);
-			modelAndView.addObject("productCategoryDto", productCategoryDto);
-			modelAndView.addObject("sports", this.sportService.getAll());
+			ProductType productType = this.productTypeService.get(id);
+			ProductTypeDto productTypeDto = this.productTypeDtoTransformer.productTypeToProductTypeDto(productType);
+			modelAndView.addObject("productTypeDto", productTypeDto);
+			modelAndView.addObject("productCategories", this.productCategoryService.getAll());
 			
 			if(request.getParameter("success") != null)
 				modelAndView.addObject("successes", "<strong>Sucesso!</strong> Categoria de produtos criada com sucesso.");
@@ -81,11 +82,11 @@ public class ProductCategoryController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.POST)
-	public String edit(@PathVariable Integer id, ProductCategoryDto productCategoryDto, BindingResult result, Model m) {
+	public String edit(@PathVariable Integer id, ProductTypeDto productTypeDto, BindingResult result, Model m) {
 		try {			
-			productCategoryDto.setId(id);
-			ProductCategory productCategory = this.productCategoryDtoTransformer.ProductCategoryDtoToProductCategory(productCategoryDto);
-			List<String> status = this.productCategoryService.update(productCategory);
+			productTypeDto.setId(id);
+			ProductType productType = this.productTypeDtoTransformer.ProductTypeDtoToProductType(productTypeDto);
+			List<String> status = this.productTypeService.update(productType);
 			
 			if(status.get(0).equals("error")) {
 	        	List<String> errors = new ArrayList<String>();
@@ -93,10 +94,10 @@ public class ProductCategoryController {
 	        		errors.add(ERROR_MESSAGES.get(status.get(i)));
 	        	m.addAttribute("errors", errors);
 	        	
-	            return "product-categories/edit";
+	            return "product-types/edit";
 	        }
 			
-			return "redirect:" + UrlConstants.URL_PRODUCT_CATEGORY + "/" + status.get(1) + "?edited";
+			return "redirect:" + UrlConstants.URL_PRODUCT_TYPE + "/" + status.get(1) + "?edited";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";
@@ -106,9 +107,9 @@ public class ProductCategoryController {
 	@RequestMapping(value="/new", method=RequestMethod.GET)
 	public ModelAndView newForm() {
 		try {
-			ModelAndView modelAndView = new ModelAndView("product-categories/new");
-			modelAndView.addObject("productCategoryDto", new ProductCategoryDto());
-			modelAndView.addObject("sports", this.sportService.getAll());
+			ModelAndView modelAndView = new ModelAndView("product-types/new");
+			modelAndView.addObject("productTypeDto", new ProductTypeDto());
+			modelAndView.addObject("productCategories", this.productCategoryService.getAll());
 			
 			return modelAndView;
 		} catch (Exception e) {
@@ -118,10 +119,10 @@ public class ProductCategoryController {
 	}
 	
 	@RequestMapping(value="/new", method=RequestMethod.POST)
-	public String insert(ProductCategoryDto productCategoryDto, BindingResult result, Model m) {
+	public String insert(ProductTypeDto productTypeDto, BindingResult result, Model m) {
 		try {			
-			ProductCategory productCategory = this.productCategoryDtoTransformer.ProductCategoryDtoToProductCategory(productCategoryDto);
-			List<String> status = this.productCategoryService.create(productCategory);
+			ProductType productType = this.productTypeDtoTransformer.ProductTypeDtoToProductType(productTypeDto);
+			List<String> status = this.productTypeService.create(productType);
 			
 			if(status.get(0).equals("error")) {
 	        	List<String> errors = new ArrayList<String>();
@@ -130,14 +131,14 @@ public class ProductCategoryController {
 	        	}
 	        	m.addAttribute("errors", errors);
 	        	
-	            return "product-categories/new";
+	            return "product-types/new";
 	        }
 			
-			return "redirect:" + UrlConstants.URL_PRODUCT_CATEGORY + "/" + status.get(1) + "?success";
+			return "redirect:" + UrlConstants.URL_PRODUCT_TYPE + "/" + status.get(1) + "?success";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";
 		}
 	}
-	
+
 }
