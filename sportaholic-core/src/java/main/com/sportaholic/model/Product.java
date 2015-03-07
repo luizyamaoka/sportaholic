@@ -36,6 +36,9 @@ public class Product {
 	@Column(name="description")
 	private String description;
 	
+	@Column(name="image")
+	private String image;
+	
 	@Column(name="price")
 	private BigDecimal price;
 	
@@ -104,6 +107,14 @@ public class Product {
 		this.description = description;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	public BigDecimal getPrice() {
 		return price;
 	}

@@ -27,6 +27,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Loja <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/brands">Marcas</a></li>
+            <li><a href="/products">Produtos</a></li>
             <li><a href="/product-categories">Categorias de produtos</a></li>
             <li><a href="/product-types">Tipos de categoria de produtos</a></li>
           </ul>

@@ -58,7 +58,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		
 		if (status.get(0).equals("success")) {
 			productCategory.setUpdatedAt(Calendar.getInstance().getTime());
-			this.productCategoryDao.update(productCategory);
+			this.productCategoryDao.merge(productCategory);
 		}
 		return status;
 	}

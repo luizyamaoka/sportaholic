@@ -10,4 +10,6 @@ public interface ProductService {
 	
 	public Product get(Integer id) throws Exception;
 	
+	public Product getEager(Integer id) throws Exception;
+	
 }

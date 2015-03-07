@@ -45,6 +45,12 @@ public class GenericDao<T, PK extends Serializable> {
 	public void update(T object) throws Exception {
 		Session session = null;
 		session = this.sessionFactory.getCurrentSession();
+		session.update(object);
+	}
+	
+	public void merge(T object) throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
 		session.merge(object);
 	}
 

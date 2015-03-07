@@ -56,7 +56,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 		
 		if (status.get(0).equals("success")) {
 			productType.setUpdatedAt(Calendar.getInstance().getTime());
-			this.productTypeDao.update(productType);
+			this.productTypeDao.merge(productType);
 		}
 		return status;
 	}
