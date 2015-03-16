@@ -17,7 +17,7 @@
  <context:annotation-config />
  <mvc:annotation-driven />
  <mvc:resources mapping="/robots.txt" location="/resources/robots.txt" order="0"/>
- <mvc:resources mapping="/sitemap.xml" location="/resources/sitemap.xml" order="0"/>
+ <!-- mvc:resources mapping="/sitemap.xml" location="/resources/sitemap.xml" order="0"/> -->
  <mvc:resources mapping="/favicon.ico" location="/resources/favicon.ico" order="0"/>
 
   <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
