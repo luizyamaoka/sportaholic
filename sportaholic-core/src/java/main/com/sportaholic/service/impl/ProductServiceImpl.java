@@ -56,6 +56,8 @@ public class ProductServiceImpl implements ProductService {
 		return null;
 	}
 
+	@Override
+	@Transactional
 	public Product getEager(Integer id) throws Exception {
 		Product product = this.productDao.get(id);
 		Hibernate.initialize(product.getProductIsSports());
