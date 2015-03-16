@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
-    <title>Autores</title>
+    <title>Esportes</title>
     <c:import url="/WEB-INF/jsp/shared/js.jsp" />
     <c:import url="/WEB-INF/jsp/shared/css.jsp" />
   </head>

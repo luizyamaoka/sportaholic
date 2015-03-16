@@ -1,22 +1,36 @@
 package com.sportaholic.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sportaholic.dto.Sitemap;
+import com.sportaholic.dto.UrlXml;
+import com.sportaholic.model.Uri;
 import com.sportaholic.service.ArticleService;
+import com.sportaholic.service.UriService;
+import com.sportaholic.transformer.UrlXmlTransformer;
 
 @Controller
 public class StaticPageController {
 
 	private ArticleService articleService;
+	private UriService uriService;
+	private UrlXmlTransformer urlXmlTransformer;
 	
 	@Autowired
-	public StaticPageController(ArticleService articleService) {
+	public StaticPageController(ArticleService articleService, 
+			UriService uriService, UrlXmlTransformer urlXmlTransformer) {
 		this.articleService = articleService;
+		this.uriService = uriService;
+		this.urlXmlTransformer = urlXmlTransformer;
 	}
 	
 	@RequestMapping("/")
@@ -66,5 +80,24 @@ public class StaticPageController {
 	@RequestMapping("/contact-us")
 	public ModelAndView contactUs() {
 		return new ModelAndView("static-pages/contact-us");
+	}
+	
+	@RequestMapping("/sitemap.xml")
+	public @ResponseBody Sitemap sitemap(HttpServletRequest request) {
+		try {
+			List<Uri> uris = this.uriService.getAll();
+			List<UrlXml> urlXmls = new ArrayList<UrlXml>();
+			
+			for (Uri uri : uris) {
+				urlXmls.add(this.urlXmlTransformer.urlToUrlXml(uri));
+			}
+			
+			Sitemap sitemap = new Sitemap();
+			sitemap.setUrlXmls(urlXmls);
+			return sitemap;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

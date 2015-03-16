@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name=DomainConstants.TB_PRODUCT)
@@ -34,6 +35,9 @@ public class Product {
 	
 	@Column(name="description")
 	private String description;
+	
+	@Column(name="image")
+	private String image;
 	
 	@Column(name="price")
 	private BigDecimal price;
@@ -103,6 +107,14 @@ public class Product {
 		this.description = description;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -175,6 +187,9 @@ public class Product {
 		this.productComments = productComments;
 	}
 	
-	
+	@Transient
+	public String getUri() {
+		return UrlConstants.URL_PRODUCT + "/" + this.id;
+	}
 	
 }

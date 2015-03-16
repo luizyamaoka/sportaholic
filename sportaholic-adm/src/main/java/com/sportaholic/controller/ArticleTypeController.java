@@ -18,11 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sportaholic.dto.ArticleTypeDto;
 import com.sportaholic.model.ArticleType;
+import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.ArticleTypeService;
 import com.sportaholic.transformer.ArticleTypeDtoTransformer;
 
 @Controller
-@RequestMapping("/article-types")
+@RequestMapping(UrlConstants.URL_ARTICLE_TYPE)
 public class ArticleTypeController {
 
 	private ArticleTypeService articleTypeService;
@@ -91,7 +92,7 @@ public class ArticleTypeController {
 	            return "article-types/edit";
 	        }
 			
-			return "redirect:" + "/article-types" + "/" + status.get(1) + "?edited";
+			return "redirect:" + UrlConstants.URL_ARTICLE_TYPE + "/" + id + "?edited";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";
@@ -127,7 +128,7 @@ public class ArticleTypeController {
 	            return "article-types/new";
 	        }
 			
-			return "redirect:" + "/article-types" + "/" + status.get(1) + "?success";
+			return "redirect:" + UrlConstants.URL_ARTICLE_TYPE + "/" + status.get(1) + "?success";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";

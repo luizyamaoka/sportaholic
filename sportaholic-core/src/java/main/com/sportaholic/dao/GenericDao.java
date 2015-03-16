@@ -24,6 +24,12 @@ public class GenericDao<T, PK extends Serializable> {
 		PK pk = (PK) session.save(object);
 		return pk;
 	}
+	
+	public void saveOrUpdate(T object) throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
+		session.saveOrUpdate(object);
+	}
 
 	@SuppressWarnings("unchecked")
 	public T get(PK id) throws Exception {
@@ -46,6 +52,12 @@ public class GenericDao<T, PK extends Serializable> {
 		Session session = null;
 		session = this.sessionFactory.getCurrentSession();
 		session.update(object);
+	}
+	
+	public void merge(T object) throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
+		session.merge(object);
 	}
 
 	public void delete(T object) throws Exception {

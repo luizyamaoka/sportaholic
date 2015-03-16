@@ -6,6 +6,7 @@ import com.sportaholic.model.Product;
 
 public interface ProductService {
 
+
 	public Product get(Integer id) throws Exception;
 	
 	public List<Product> getAll() throws Exception;
@@ -16,5 +17,7 @@ public interface ProductService {
 	
 	public List<Product> getBySet(Integer brandId, Integer sportId, 
 			Integer productCategoryId, Integer productTypeId) throws Exception;
+	
+	public Product getEager(Integer id) throws Exception;
 	
 }

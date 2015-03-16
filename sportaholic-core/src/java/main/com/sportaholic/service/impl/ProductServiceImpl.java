@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -53,6 +54,13 @@ public class ProductServiceImpl implements ProductService {
 			Integer productCategoryId, Integer productTypeId) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Product getEager(Integer id) throws Exception {
+		Product product = this.productDao.get(id);
+		Hibernate.initialize(product.getProductIsSports());
+		Hibernate.initialize(product.getProductIsTypes());
+		return product;
 	}
 
 }
