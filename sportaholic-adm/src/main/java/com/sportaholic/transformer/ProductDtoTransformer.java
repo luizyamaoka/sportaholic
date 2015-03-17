@@ -53,12 +53,10 @@ public class ProductDtoTransformer {
 		
 		List<ProductIsType> productIsTypes = new ArrayList<ProductIsType>();
 		for (Integer productTypeId : productDto.getProductTypeIds()) {
-			System.out.println(productTypeId);
 			ProductIsType productIsType = new ProductIsType();
 			productIsType.setProduct(product);
 			productIsType.setProductType(this.productTypeDao.get(productTypeId));
 			productIsTypes.add(productIsType);
-			System.out.println(productIsType.getProduct().getName());
 		}
 		product.setProductIsTypes(productIsTypes);
 		

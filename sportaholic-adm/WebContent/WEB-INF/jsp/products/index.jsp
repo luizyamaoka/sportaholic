@@ -26,7 +26,7 @@
       <c:forEach var="product" items="${products}">
         <p>
           <a href="/products/${product.id}" class="btn btn-warning btn-xs">Editar</a>
-          ${product.id} - ${product.name}
+          ${product.brand.name} - ${product.name}
         </p>
       </c:forEach>
             
