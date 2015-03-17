@@ -112,11 +112,10 @@ body {
 .product-carousel {
   height: 400px;
   display: block;
-  padding: 4px;
+  padding: 4px 4px 20px 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
   background-color: #fff;
-  border: 1px solid #ddd;
   border-radius: 4px;
   transition: all .2s ease-in-out;
 }
@@ -132,6 +131,11 @@ body {
 .product-carousel > .product-info > h4 {
   text-align: center;
   padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.product-carousel > .product-info > h4 > .brand {
+  font-weight: bold;
 }
 
 .product-carousel > .product-info > p {

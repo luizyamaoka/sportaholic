@@ -1,5 +1,5 @@
 ALTER TABLE product
-ADD image timestamp;
+ADD image text;
 
 UPDATE product
 SET image = '';

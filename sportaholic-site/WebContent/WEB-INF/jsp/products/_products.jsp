@@ -12,7 +12,7 @@
       <div class="product-carousel">
         <img class="product-image" src="http://placehold.it/200x200" data-holder-rendered="true">
         <div class="product-info">
-          <h4>${product.brand.name}<br />${product.name}</h4>
+          <h4><span class="brand">${product.brand.name}</span><br />${product.name}</h4>
           <p class="product-price">
             R$ <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0.00" minFractionDigits="2" maxFractionDigits="2"/>
           </p>
