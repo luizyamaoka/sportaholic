@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name=DomainConstants.TB_BRAND)
@@ -92,6 +93,11 @@ public class Brand {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+	
+	@Transient
+	public String getUri() {
+		return UrlConstants.URL_BRAND + "/" + this.id;
 	}
 	
 }

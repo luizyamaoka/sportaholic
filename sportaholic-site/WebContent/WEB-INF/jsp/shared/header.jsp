@@ -38,7 +38,7 @@
     
 
     <a href="/">
-      <img id="logo" src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/logo.png" height="40px">
+      <img id="logo" src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>logo.png" height="40px">
     </a>
     
 </div>

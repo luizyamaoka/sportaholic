@@ -286,13 +286,20 @@ body {
 #footer-social > li > a {
   float: left;
 }
-
-#brand-logo {
-  max-width: 200px; 
-  width: 100%;
+.brand-logo {
+  height: 100px;
+  position: relative;
+}
+.brand-logo > a > img {
   display: block;
   margin-right: auto;
   margin-left: auto;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 #brand-info {
   text-align: left;
@@ -301,6 +308,11 @@ body {
     #brand-info{
         text-align: center;
     }
+}
+
+.brands-list > .brand-item {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 

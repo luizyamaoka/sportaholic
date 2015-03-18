@@ -21,9 +21,17 @@
       <c:import url="/WEB-INF/jsp/shared/alert.jsp" />
       <c:import url="/WEB-INF/jsp/shared/breadcrumb.jsp" />
 
+	  <h1 class="page-header">Todas as marcas</h1>
+	  
+	  <div class="row brands-list">
       <c:forEach var="brand" items="${brands}">
-        <p>${brand.name}</p>
+        <div class="col-md-3 col-sm-4 col-xs-12 brand-logo">
+          <a href="${uriService.getFriendlyUri(brand.getUri())}">
+            <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>${brand.logo}" alt="${brand.name}"/>
+          </a>
+        </div>
       </c:forEach>
+      </div>
  
     </div>
     

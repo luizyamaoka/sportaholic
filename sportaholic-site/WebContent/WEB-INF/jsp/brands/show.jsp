@@ -22,8 +22,10 @@
       <c:import url="/WEB-INF/jsp/shared/breadcrumb.jsp" />
     
       <div class="row">
-        <div class="col-sm-3 col-xs-12">
-          <img id="brand-logo" src="http://placehold.it/200x100">
+        <div class="col-sm-3 col-xs-12 brand-logo">
+          <a href="${uriService.getFriendlyUri(brand.getUri())}">
+            <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>${brand.logo}">
+          </a>
         </div>
         <div id="brand-info" class="col-sm-9 col-xs-12">
           <h1>${brand.name}</h1>
