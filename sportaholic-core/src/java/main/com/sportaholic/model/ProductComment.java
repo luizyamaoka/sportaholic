@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name=DomainConstants.TB_PRODUCT)
+@Table(name=DomainConstants.TB_PRODUCT_COMMENT)
 public class ProductComment {
 
 	@Id

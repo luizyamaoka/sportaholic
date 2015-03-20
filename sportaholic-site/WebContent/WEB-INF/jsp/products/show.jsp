@@ -20,18 +20,28 @@
     
       <c:import url="/WEB-INF/jsp/shared/alert.jsp" />
       <c:import url="/WEB-INF/jsp/shared/breadcrumb.jsp" />
-
-
+      
+      <div class="row">
+        <div class="col-sm-6 col-xs-12 product-main-image">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>${product.image}" alt="${product.name}" style="max-width: 100%; max-height: 100%;" />
+        </div>
+        <div class="col-sm-6 col-xs-12 product-description">
+          <h2>${product.brand.name}</h2>
+          <h1>${product.name}</h1>
+          <p>${product.description}</p>
+          <p>
+            R$ <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0.00" minFractionDigits="2" maxFractionDigits="2"/>
+          </p>
+          <p style="margin-top: 50px;"><a href="${uriService.getFriendlyUri(product.uri)}" class="btn-big" role="button">Comprar</a></p>
+        </div>
+      </div>
     
-    <div class="row">
-
-      <div class="col-sm-9 col-sm-push-3">
-        <c:import url="/WEB-INF/jsp/articles/_articles.jsp" />
-	  </div>
-	  
-	  <c:import url="/WEB-INF/jsp/brands/_menu.jsp" />
-	  
-    </div>
+      <c:if test="${not empty products}">
+      <h3 class="page-header">Você também pode gostar</h3>
+      <div class="row">
+        <c:import url="/WEB-INF/jsp/products/_products.jsp" />
+      </div>
+      </c:if>
 
 </div>
 

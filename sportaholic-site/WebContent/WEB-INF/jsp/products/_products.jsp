@@ -8,9 +8,9 @@
     </div>
   </c:if>
   <c:forEach var="product" items="${products}">
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4 col-lg-3">
       <div class="product-carousel">
-        <img class="product-image" src="http://placehold.it/200x200" data-holder-rendered="true">
+        <img class="product-image" src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>${product.image}" data-holder-rendered="true">
         <div class="product-info">
           <h4><span class="brand">${product.brand.name}</span><br />${product.name}</h4>
           <p class="product-price">

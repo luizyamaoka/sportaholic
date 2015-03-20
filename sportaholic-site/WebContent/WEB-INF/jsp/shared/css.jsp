@@ -121,8 +121,8 @@ body {
 }
 
 .product-carousel > .product-image {
-  width: 100%; 
   max-width: 200px;
+  max-height: 200px;
   display: block;
   margin-right: auto;
   margin-left: auto;
@@ -315,5 +315,33 @@ body {
   margin-bottom: 10px;
 }
 
+.product-main-image {
+  height: 400px;
+  position: relative;
+}
+.product-main-image > img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.product-description > h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+.product-description > h2 {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 48em){
+    .product-description{
+        text-align: center;
+    }
+}
 
 </style>
