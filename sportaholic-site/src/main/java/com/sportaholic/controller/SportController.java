@@ -27,6 +27,18 @@ public class SportController {
 		this.articleTypeService = articleTypeService;
 	}
 	
+	@RequestMapping("")
+	public ModelAndView index() {
+		try {
+			ModelAndView modelAndView = new ModelAndView("sports/index");
+			modelAndView.addObject("sports", this.sportService.getAll());
+			return modelAndView;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ModelAndView("errors/unexpected-error");
+		}
+	}
+	
 	@RequestMapping("/{id}")
 	public ModelAndView get(@PathVariable Integer id) {
 		try {

@@ -204,6 +204,14 @@ body {
   background-color: #ff6600;
   color: #fff;
 }
+.list-group > a:hover > h4 {
+  background-color: #ff6600;
+  color: #fff;
+}
+.list-group > a:focus > h4 {
+  background-color: #ff6600;
+  color: #fff;
+}
 .read-more {
   font-size: 14px;
   padding: 20px 0;

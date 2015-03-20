@@ -60,7 +60,8 @@
 <div id="main-menu">
   <div class="container">
     <a href="/"><span class="glyphicon glyphicon-home"></span></a> 
-    <a href="${uriService.getFriendlyUri('/sports/1')}">Natação</a>
+    <a href="${uriService.getFriendlyUri('/sports')}">Esportes</a>
+    <a href="${uriService.getFriendlyUri('/brands')}">Marcas</a>
     <a href="${uriService.getFriendlyUri('/about-us')}">Quem somos</a>
 
   </div>
