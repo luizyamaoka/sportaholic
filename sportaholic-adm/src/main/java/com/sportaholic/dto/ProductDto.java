@@ -15,6 +15,7 @@ public class ProductDto {
 	private Integer brandId;
 	private List<Integer> productTypeIds;
 	private List<Integer> productSportIds;
+	private String meliUrl;
 	
 	private Integer uriId;
 	private String friendlyUri;
@@ -111,6 +112,12 @@ public class ProductDto {
 	}
 	public void setProductSportIds(List<Integer> productSportIds) {
 		this.productSportIds = productSportIds;
+	}
+	public String getMeliUrl() {
+		return meliUrl;
+	}
+	public void setMeliUrl(String meliUrl) {
+		this.meliUrl = meliUrl;
 	}
 	
 }

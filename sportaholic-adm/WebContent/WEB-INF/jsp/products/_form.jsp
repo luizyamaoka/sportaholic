@@ -70,6 +70,12 @@
 			  </c:forEach>
 			</div>
 		  </div>
+		  <div class="form-group">
+            <label for="meliUrlInput" class="control-label col-sm-4 col-xs-12">Url Mercado Livre * </label>
+            <div class="col-sm-8 col-xs-12">
+			  <form:input path="meliUrl" class="form-control" id="meliUrlInput" placeholder="Url Mercado Livre" />
+			</div>
+		  </div>
 	      <form:hidden path="uriId" class="form-control" id="uriIdInput"  />
 		  <div class="form-group">
             <label for="friendlyUriInput" class="control-label col-sm-4 col-xs-12">Url amigável * </label>
