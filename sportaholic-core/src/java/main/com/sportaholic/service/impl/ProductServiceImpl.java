@@ -60,8 +60,8 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	public Product getEager(Integer id) throws Exception {
 		Product product = this.productDao.get(id);
-//		Hibernate.initialize(product.getProductIsSports());
-//		Hibernate.initialize(product.getProductIsTypes());
+		Hibernate.initialize(product.getProductIsSports());
+		Hibernate.initialize(product.getProductIsTypes());
 		Hibernate.initialize(product.getProductComments());
 		Hibernate.initialize(product.getBrand().getProducts());
 		return product;

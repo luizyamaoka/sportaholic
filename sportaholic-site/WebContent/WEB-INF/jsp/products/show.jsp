@@ -32,7 +32,24 @@
           <p>
             R$ <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0.00" minFractionDigits="2" maxFractionDigits="2"/>
           </p>
-          <p style="margin-top: 50px;"><a href="${uriService.getFriendlyUri(product.uri)}" class="btn-big" role="button">Comprar</a></p>
+          <p style="margin-top: 50px;">
+            <c:choose>
+              <c:when test="${not product.isActive}">
+                <div style="background-color: #eeeeee; padding: 30px 30px; font-size: 14px;">
+                  Produto não disponível para compra
+                </div>
+              </c:when>
+              <c:when test="${product.inStock <= 0}">w
+                <div style="background-color: #eeeeee; padding: 30px 30px; font-size: 14px;">
+                  Produto sem estoque
+                </div>
+              </c:when>
+              <c:otherwise>
+                <a href="${product.meliUrl}" class="btn-big" role="button">Comprar</a>
+              </c:otherwise>
+            </c:choose>
+            
+          </p>
         </div>
       </div>
     

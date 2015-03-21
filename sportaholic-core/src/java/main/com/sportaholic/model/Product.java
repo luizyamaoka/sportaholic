@@ -48,6 +48,9 @@ public class Product {
 	@Column(name="in_stock")
 	private Integer inStock;
 	
+	@Column(name="meli_url")
+	private String meliUrl;
+	
 	@ManyToOne
 	@JoinColumn(name="brand_id")
 	private Brand brand;
@@ -190,6 +193,14 @@ public class Product {
 	@Transient
 	public String getUri() {
 		return UrlConstants.URL_PRODUCT + "/" + this.id;
+	}
+
+	public String getMeliUrl() {
+		return meliUrl;
+	}
+
+	public void setMeliUrl(String meliUrl) {
+		this.meliUrl = meliUrl;
 	}
 	
 }
