@@ -198,6 +198,10 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 			status.set(0, "error");
 			status.add("metaDescription.required");
 		}
+		if (productDto.getMetaDescription() != null || productDto.getMetaDescription().length() > 160) {
+			status.set(0, "error");
+			status.add("metaDescription.legth");
+		}
 		
 		return status;
 	}

@@ -65,6 +65,7 @@ public class ArticleController {
 		ERROR_MESSAGES.put("name.required", "O nome da url precisa ser preenchido.");
 		ERROR_MESSAGES.put("parentId.required", "Selecione a url pai.");
 		ERROR_MESSAGES.put("metaDescription.required", "A meta description precisa ser preenchida.");
+		ERROR_MESSAGES.put("metaDescription.length", "A meta description deve ter no máximo 160 caracteres.");
 		
 	}
 	
