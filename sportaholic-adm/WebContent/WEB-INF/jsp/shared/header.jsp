@@ -32,6 +32,12 @@
             <li><a href="/product-types">Tipos de categoria de produtos</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Url <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/uris">Uris</a></li>
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/<c:url value='j_spring_security_logout' />">Logout</a></li>

@@ -119,9 +119,9 @@ public class AdmAuthorServiceImpl implements AdmAuthorService {
 			status.set(0, "error");
 			status.add("metaDescription.required");
 		}
-		if (authorDto.getMetaDescription() != null || authorDto.getMetaDescription().length() > 160) {
+		if (authorDto.getMetaDescription() != null && authorDto.getMetaDescription().length() > 160) {
 			status.set(0, "error");
-			status.add("metaDescription.legth");
+			status.add("metaDescription.length");
 		}
 		
 		return status;

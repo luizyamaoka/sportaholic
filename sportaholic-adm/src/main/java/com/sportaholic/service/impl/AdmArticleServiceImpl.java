@@ -221,9 +221,9 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 			status.set(0, "error");
 			status.add("metaDescription.required");
 		}
-		if (articleDto.getMetaDescription() != null || articleDto.getMetaDescription().length() > 160) {
+		if (articleDto.getMetaDescription() != null && articleDto.getMetaDescription().length() > 160) {
 			status.set(0, "error");
-			status.add("metaDescription.legth");
+			status.add("metaDescription.length");
 		}
 		
 		return status;

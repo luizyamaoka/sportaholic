@@ -122,9 +122,9 @@ public class AdmSportServiceImpl implements AdmSportService {
 			status.set(0, "error");
 			status.add("metaDescription.required");
 		}
-		if (sportDto.getMetaDescription() != null || sportDto.getMetaDescription().length() > 160) {
+		if (sportDto.getMetaDescription() != null && sportDto.getMetaDescription().length() > 160) {
 			status.set(0, "error");
-			status.add("metaDescription.legth");
+			status.add("metaDescription.length");
 		}
 		
 		return status;

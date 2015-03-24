@@ -56,7 +56,7 @@ public class ProductController {
 		ERROR_MESSAGES.put("friendlyUri.startsWithSlash", "A url amigável precisa começar com /");
 		ERROR_MESSAGES.put("friendlyUri.containsSpaces", "A url amigável nao pode conter espaços");
 		ERROR_MESSAGES.put("friendlyUri.existant", "A url amigável escolhida já existe.");
-		ERROR_MESSAGES.put("name.required", "O nome da url precisa ser preenchido.");
+		ERROR_MESSAGES.put("uriName.required", "O nome da url precisa ser preenchido.");
 		ERROR_MESSAGES.put("parentId.required", "Selecione a url pai.");
 		ERROR_MESSAGES.put("metaDescription.required", "A meta description precisa ser preenchida.");
 		ERROR_MESSAGES.put("metaDescription.length", "A meta description deve ter no máximo 160 caracteres.");

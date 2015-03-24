@@ -123,9 +123,9 @@ public class AdmBrandServiceImpl implements AdmBrandService {
 			status.set(0, "error");
 			status.add("metaDescription.required");
 		}
-		if (brandDto.getMetaDescription() != null || brandDto.getMetaDescription().length() > 160) {
+		if (brandDto.getMetaDescription() != null && brandDto.getMetaDescription().length() > 160) {
 			status.set(0, "error");
-			status.add("metaDescription.legth");
+			status.add("metaDescription.length");
 		}
 		
 		return status;

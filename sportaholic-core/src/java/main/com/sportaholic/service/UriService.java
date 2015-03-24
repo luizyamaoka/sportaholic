@@ -6,6 +6,8 @@ import com.sportaholic.model.Uri;
 
 public interface UriService {
 
+	public Uri get(Integer id) throws Exception;
+	
 	public Uri getByUri(String uri) throws Exception;
 	
 	public Uri getByFriendlyUri(String friendlyUri) throws Exception;
@@ -13,4 +15,5 @@ public interface UriService {
 	public String getFriendlyUri(String uri) throws Exception;
 
 	public List<Uri> getAll() throws Exception;
+	
 }

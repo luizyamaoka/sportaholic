@@ -186,9 +186,9 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 				status.add("friendlyUri.existant");
 			}
 		}
-		if (productDto.getName() == null || productDto.getName().length() == 0) {
+		if (productDto.getUriName() == null || productDto.getUriName().length() == 0) {
 			status.set(0, "error");
-			status.add("name.required");
+			status.add("uriName.required");
 		}
 		if (productDto.getParentId() == null || productDto.getParentId() == 0) {
 			status.set(0, "error");
@@ -198,9 +198,9 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 			status.set(0, "error");
 			status.add("metaDescription.required");
 		}
-		if (productDto.getMetaDescription() != null || productDto.getMetaDescription().length() > 160) {
+		if (productDto.getMetaDescription() != null && productDto.getMetaDescription().length() > 160) {
 			status.set(0, "error");
-			status.add("metaDescription.legth");
+			status.add("metaDescription.length");
 		}
 		
 		return status;

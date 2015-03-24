@@ -23,6 +23,12 @@ public class UriServiceImpl implements UriService {
 	
 	@Override
 	@Transactional
+	public Uri get(Integer id) throws Exception {
+		return this.uriDao.get(id);
+	}
+	
+	@Override
+	@Transactional
 	public Uri getByUri(String uri) throws Exception {
 		return this.uriDao.getByUri(uri);
 	}
