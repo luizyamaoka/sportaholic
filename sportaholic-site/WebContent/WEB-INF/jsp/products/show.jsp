@@ -45,7 +45,7 @@
                 </div>
               </c:when>
               <c:otherwise>
-                <a href="${product.meliUrl}" class="btn-big" role="button" target="blank">Comprar</a>
+                <a href="${product.meliUrl}" class="btn-big" role="button" target="blank">Comprar pelo Mercado Livre</a>
               </c:otherwise>
             </c:choose>
             
