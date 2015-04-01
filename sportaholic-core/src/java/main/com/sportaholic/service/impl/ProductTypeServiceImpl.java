@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ProductTypeDao;
 import com.sportaholic.model.ProductType;
@@ -24,19 +23,19 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public ProductType get(Integer id) throws Exception {
 		return this.productTypeDao.get(id);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<ProductType> getAll() throws Exception {
 		return this.productTypeDao.getAll();
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(ProductType productType) throws Exception {
 		List<String> status = this.testProductType(productType);
 		
@@ -50,7 +49,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> update(ProductType productType) throws Exception {
 		List<String> status = this.testProductType(productType);
 		

@@ -2,10 +2,9 @@ package com.sportaholic.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.SportDao;
 import com.sportaholic.model.Sport;
@@ -22,13 +21,13 @@ public class SportServiceImpl implements SportService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Sport get(int id) throws Exception {
 		return this.sportDao.get(id);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Sport> getAll() throws Exception {
 		return this.sportDao.getAll();
 	}

@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.SportDao;
 import com.sportaholic.dao.UriDao;
@@ -33,7 +32,7 @@ public class AdmSportServiceImpl implements AdmSportService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(SportDto sportDto) throws Exception {
 		List<String> status = this.testSportDto(sportDto);
 		
@@ -56,7 +55,7 @@ public class AdmSportServiceImpl implements AdmSportService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> update(SportDto sportDto) throws Exception {
 		List<String> status = this.testSportDto(sportDto);
 		

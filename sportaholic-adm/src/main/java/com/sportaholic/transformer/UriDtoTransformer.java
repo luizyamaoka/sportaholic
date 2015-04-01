@@ -2,6 +2,7 @@ package com.sportaholic.transformer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.UriDao;
 import com.sportaholic.dto.UriDto;
@@ -17,6 +18,7 @@ public class UriDtoTransformer {
 		this.uriDao = uriDao;
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
 	public Uri uriDtoToUri(UriDto uriDto) throws Exception {
 		Uri uri = uriDto.getUriId() == null ? new Uri() : this.uriDao.get(uriDto.getUriId());
 		
@@ -29,6 +31,7 @@ public class UriDtoTransformer {
 		return uri;
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
 	public UriDto uriToUriDto(Uri uri) throws Exception {
 		UriDto uriDto = new UriDto();
 		

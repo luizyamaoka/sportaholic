@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ClientDao;
 import com.sportaholic.dto.ClientDto;
@@ -29,19 +28,19 @@ public class ClientServiceImpl implements ClientService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Client get(int id) throws Exception {
 		return this.clientDao.get(id);
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Client getByEmail(String email) throws Exception {
 		return this.clientDao.getByEmail(email);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(ClientDto clientDto) throws Exception {
 		List<String> status = this.testClientDto(clientDto);
 		
@@ -67,7 +66,7 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> update(ClientDto clientDto) throws Exception {
 		List<String> status = this.testClientDto(clientDto);
 			
@@ -82,7 +81,7 @@ public class ClientServiceImpl implements ClientService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void changeRandomPassword(Client client, String emailBody) throws Exception {
 
 		String newPassword = Helper.getRandomString(10);

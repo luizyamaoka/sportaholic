@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ArticleCommentDao;
 import com.sportaholic.model.ArticleComment;
@@ -24,13 +23,13 @@ public class ArticleCommentServiceImpl implements ArticleCommentService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public ArticleComment get(int id) throws Exception {
 		return this.articleCommentDao.get(id);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(ArticleComment articleComment) throws Exception {
 		List<String> status = this.testArticleComment(articleComment);
 		

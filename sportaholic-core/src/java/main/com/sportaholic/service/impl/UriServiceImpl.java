@@ -2,10 +2,9 @@ package com.sportaholic.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.UriDao;
 import com.sportaholic.model.Uri;
@@ -22,32 +21,32 @@ public class UriServiceImpl implements UriService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Uri get(Integer id) throws Exception {
 		return this.uriDao.get(id);
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Uri getByUri(String uri) throws Exception {
 		return this.uriDao.getByUri(uri);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Uri getByFriendlyUri(String friendlyUri) throws Exception {
 		return this.uriDao.getByFriendlyUri(friendlyUri);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public String getFriendlyUri(String uri) throws Exception {
 		Uri foundUri = this.uriDao.getByUri(uri);
 		return foundUri == null ? uri : foundUri.getFriendlyUri();
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Uri> getAll() throws Exception {
 		return this.uriDao.getAll();
 	}

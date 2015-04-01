@@ -2,10 +2,9 @@ package com.sportaholic.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ArticleDao;
 import com.sportaholic.model.Article;
@@ -23,13 +22,13 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Article get(int id) throws Exception {
 		return this.articleDao.get(id);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Article getEager(int id) throws Exception {
 		Article article = this.articleDao.get(id);
 		for (ArticleComment articleComment : article.getArticleComments())
@@ -38,20 +37,20 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Article> getPublishedBySet(Integer sportId, Integer articleTypeId)
 			throws Exception {
 		return this.articleDao.getPublishedBySet(sportId, articleTypeId);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Article> getAll() throws Exception {
 		return this.articleDao.getAll();
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Article> getPublishedPaginated(int pageNumber, int pageSize)
 			throws Exception {
 		return this.articleDao.getPublishedPaginated(pageNumber, pageSize);

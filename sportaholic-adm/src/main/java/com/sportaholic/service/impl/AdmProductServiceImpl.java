@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ProductDao;
 import com.sportaholic.dao.ProductIsSportDao;
@@ -45,7 +44,7 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(ProductDto productDto) throws Exception {
 		List<String> status = this.testProductDto(productDto);
 		
@@ -78,7 +77,7 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> update(ProductDto productDto) throws Exception {
 		List<String> status = this.testProductDto(productDto);
 		

@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.UriDao;
 import com.sportaholic.dto.UriDto;
@@ -29,19 +28,19 @@ public class AdmUriServiceImpl implements AdmUriService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Uri get(Integer id) throws Exception {
 		return this.uriDao.get(id);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Uri> getAll() throws Exception {
 		return this.uriDao.getAll();
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(UriDto uriDto) throws Exception {
 		List<String> status = this.testUriDto(uriDto);
 		
@@ -58,7 +57,7 @@ public class AdmUriServiceImpl implements AdmUriService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> update(UriDto uriDto) throws Exception {
 		List<String> status = this.testUriDto(uriDto);
 		

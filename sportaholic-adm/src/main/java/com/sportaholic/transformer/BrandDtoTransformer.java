@@ -1,9 +1,8 @@
 package com.sportaholic.transformer;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.BrandDao;
 import com.sportaholic.dao.UriDao;
@@ -24,7 +23,7 @@ public class BrandDtoTransformer {
 		this.uriDao = uriDao;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Brand brandDtoToBrand(BrandDto brandDto) throws Exception {
 		Brand brand = brandDto.getId() == null ? new Brand() : this.brandDao.get(brandDto.getId());
 		
@@ -35,7 +34,7 @@ public class BrandDtoTransformer {
 		return brand;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Uri brandDtoToUri(BrandDto brandDto) throws Exception {
 		Uri uri = brandDto.getUriId() == null ? new Uri() : this.uriDao.get(brandDto.getUriId());
 		
@@ -47,7 +46,7 @@ public class BrandDtoTransformer {
 		return uri;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public BrandDto brandToBrandDto(Brand brand) throws Exception {
 		BrandDto brandDto = new BrandDto();
 		

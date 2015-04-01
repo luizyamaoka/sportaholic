@@ -2,11 +2,10 @@ package com.sportaholic.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ProductDao;
 import com.sportaholic.model.Product;
@@ -23,33 +22,33 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Product get(Integer id) throws Exception {
 		return this.productDao.get(id);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Product> getAll() throws Exception {
 		return this.productDao.getAll();
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(Product product) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> update(Product product) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Product> getBySet(Integer brandId, Integer sportId,
 			Integer productCategoryId, Integer productTypeId) throws Exception {
 		// TODO Auto-generated method stub
@@ -57,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Product getEager(Integer id) throws Exception {
 		Product product = this.productDao.get(id);
 		Hibernate.initialize(product.getProductIsSports());
@@ -68,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<Product> getActivePaginated(int pageNumber, int pageSize)
 			throws Exception {
 		return this.productDao.getActivePaginated(pageNumber, pageSize);

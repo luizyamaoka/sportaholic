@@ -2,10 +2,9 @@ package com.sportaholic.service.impl;
 
 import java.util.Calendar;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ReadingDao;
 import com.sportaholic.model.Reading;
@@ -22,7 +21,7 @@ public class ReadingServiceImpl implements ReadingService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public void create(Reading reading) {
 		try {
 			reading.setCreatedAt(Calendar.getInstance().getTime());

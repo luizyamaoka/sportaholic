@@ -1,9 +1,8 @@
 package com.sportaholic.transformer;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.AuthorDao;
 import com.sportaholic.dao.UriDao;
@@ -24,7 +23,7 @@ public class AuthorDtoTransformer {
 		this.uriDao = uriDao;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Author authorDtoToAuthor(AuthorDto authorDto) throws Exception {
 		Author author = authorDto.getId() == null ? new Author() : this.authorDao.get(authorDto.getId()); 
 		
@@ -35,7 +34,7 @@ public class AuthorDtoTransformer {
 		return author;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Uri authorDtoToUri(AuthorDto authorDto) throws Exception {
 		Uri uri = authorDto.getUriId() == null ? new Uri() : this.uriDao.get(authorDto.getUriId());
 		
@@ -47,7 +46,7 @@ public class AuthorDtoTransformer {
 		return uri;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public AuthorDto authorToAuthorDto(Author author) throws Exception {
 		AuthorDto authorDto = new AuthorDto();
 		

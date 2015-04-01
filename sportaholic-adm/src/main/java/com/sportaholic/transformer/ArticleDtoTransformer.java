@@ -5,10 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ArticleDao;
 import com.sportaholic.dao.ArticleTypeDao;
@@ -42,7 +41,7 @@ public class ArticleDtoTransformer {
 		this.articleDao = articleDao;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Article articleDtoToArticle(ArticleDto articleDto) throws Exception {
 		Article article = articleDto.getId() == null ? new Article() : this.articleDao.get(articleDto.getId());
 		
@@ -76,7 +75,7 @@ public class ArticleDtoTransformer {
 		return article;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Uri articleDtoToUri(ArticleDto articleDto) throws Exception {
 		Uri uri = articleDto.getUriId() == null ? new Uri() : this.uriDao.get(articleDto.getUriId());
 		
@@ -88,7 +87,7 @@ public class ArticleDtoTransformer {
 		return uri;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public ArticleDto articleToArticleDto(Article article) throws Exception {
 		ArticleDto articleDto = new ArticleDto();
 		

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ArticleDao;
 import com.sportaholic.dao.ArticleIsSportDao;
@@ -42,7 +42,7 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(ArticleDto articleDto) throws Exception {
 		List<String> status = this.testArticleDto(articleDto);
 		
@@ -75,7 +75,7 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> update(ArticleDto articleDto) throws Exception {
 		List<String> status = this.testArticleDto(articleDto);
 		
@@ -230,13 +230,11 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public Article getEager(int id) throws Exception {
 		Article article = this.articleDao.get(id);
-		
-		article.getArticleIsSports().size();
-		article.getArticleIsTypes().size();
-		
+		Hibernate.initialize(article.getArticleIsSports());
+		Hibernate.initialize(article.getArticleIsTypes());		
 		return article;
 	}
 

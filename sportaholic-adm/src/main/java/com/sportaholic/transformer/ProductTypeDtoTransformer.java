@@ -1,9 +1,8 @@
 package com.sportaholic.transformer;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ProductCategoryDao;
 import com.sportaholic.dao.ProductTypeDao;
@@ -23,7 +22,7 @@ public class ProductTypeDtoTransformer {
 		this.productCategoryDao = productCategoryDao;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public ProductTypeDto productTypeToProductTypeDto(ProductType productType) throws Exception {
 		ProductTypeDto productTypeDto = new ProductTypeDto();
 		productTypeDto.setId(productType.getId());
@@ -32,7 +31,7 @@ public class ProductTypeDtoTransformer {
 		return productTypeDto;
 	}
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public ProductType ProductTypeDtoToProductType(ProductTypeDto productTypeDto) throws Exception {
 		ProductType productType = productTypeDto.getId() == null ? new ProductType() : 
 			this.productTypeDao.get(productTypeDto.getId());

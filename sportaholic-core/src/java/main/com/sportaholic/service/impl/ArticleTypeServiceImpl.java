@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sportaholic.dao.ArticleTypeDao;
 import com.sportaholic.model.ArticleType;
@@ -24,19 +23,19 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
 	}
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<ArticleType> getAll() throws Exception {
 		return this.articleTypeDao.getAll();
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public ArticleType get(Integer id) throws Exception {
 		return this.articleTypeDao.get(id);
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> update(ArticleType articleType) throws Exception {
 		List<String> status = this.testArticleType(articleType);
 		
@@ -49,7 +48,7 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public List<String> create(ArticleType articleType) throws Exception {
 		List<String> status = this.testArticleType(articleType);
 		
