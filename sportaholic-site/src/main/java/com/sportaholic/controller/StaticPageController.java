@@ -15,6 +15,7 @@ import com.sportaholic.dto.Sitemap;
 import com.sportaholic.dto.UrlXml;
 import com.sportaholic.model.Uri;
 import com.sportaholic.service.ArticleService;
+import com.sportaholic.service.ProductService;
 import com.sportaholic.service.UriService;
 import com.sportaholic.transformer.UrlXmlTransformer;
 
@@ -22,13 +23,16 @@ import com.sportaholic.transformer.UrlXmlTransformer;
 public class StaticPageController {
 
 	private ArticleService articleService;
+	private ProductService productService;
 	private UriService uriService;
 	private UrlXmlTransformer urlXmlTransformer;
 	
 	@Autowired
 	public StaticPageController(ArticleService articleService, 
-			UriService uriService, UrlXmlTransformer urlXmlTransformer) {
+			UriService uriService, UrlXmlTransformer urlXmlTransformer,
+			ProductService productService) {
 		this.articleService = articleService;
+		this.productService = productService;
 		this.uriService = uriService;
 		this.urlXmlTransformer = urlXmlTransformer;
 	}
@@ -43,7 +47,8 @@ public class StaticPageController {
 			if(request.getParameter("success") != null)
 				modelAndView.addObject("successes", "<strong>Bem-vindo!</strong> Login efetuado com sucesso.");
 			
-			modelAndView.addObject("articles", this.articleService.getPublishedBySet(null, null));
+			modelAndView.addObject("articles", this.articleService.getPublishedPaginated(1, 3));
+			modelAndView.addObject("products", this.productService.getActivePaginated(1, 4));
 			
 			return modelAndView;
 		} catch (Exception e) {

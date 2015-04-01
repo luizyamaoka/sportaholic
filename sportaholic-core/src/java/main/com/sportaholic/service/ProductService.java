@@ -11,6 +11,8 @@ public interface ProductService {
 	
 	public List<Product> getAll() throws Exception;
 	
+	public List<Product> getActivePaginated(int pageNumber, int pageSize) throws Exception;
+	
 	public List<String> create(Product product) throws Exception;
 	
 	public List<String> update(Product product) throws Exception;

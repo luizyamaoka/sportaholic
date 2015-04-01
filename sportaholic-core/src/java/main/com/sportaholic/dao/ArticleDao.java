@@ -71,4 +71,17 @@ public class ArticleDao extends GenericDao<Article, Integer> {
 		return objects;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Article> getPublishedPaginated(int pageNumber, int pageSize) throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Article.class);
+		criteria.add(Restrictions.le("publishedAt", Calendar.getInstance().getTime()));
+		criteria.setFirstResult((pageNumber - 1) * pageSize);
+		criteria.setMaxResults(pageSize);
+		criteria.addOrder(Order.desc("publishedAt"));
+		List<Article> objects = criteria.list();
+		return objects;
+	}
+	
 }

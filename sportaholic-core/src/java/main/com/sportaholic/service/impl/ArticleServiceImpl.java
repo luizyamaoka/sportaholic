@@ -50,4 +50,11 @@ public class ArticleServiceImpl implements ArticleService {
 		return this.articleDao.getAll();
 	}
 
+	@Override
+	@Transactional
+	public List<Article> getPublishedPaginated(int pageNumber, int pageSize)
+			throws Exception {
+		return this.articleDao.getPublishedPaginated(pageNumber, pageSize);
+	}
+
 }
