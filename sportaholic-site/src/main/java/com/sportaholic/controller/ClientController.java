@@ -139,7 +139,7 @@ public class ClientController {
 	        } catch (Exception e) {
 	        	e.printStackTrace();
 	        }
-	        return "redirect:/clients/" + status.get(1) + "?success";
+	        return "redirect:/login?subscribed";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "errors/unexpected-error";

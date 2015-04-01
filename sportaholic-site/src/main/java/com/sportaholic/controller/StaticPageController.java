@@ -63,6 +63,8 @@ public class StaticPageController {
 		
 		if(request.getParameter("error") != null)
 			modelAndView.addObject("errors", "<strong>Erro!</strong> Usuário e/ou senha incorretos.");
+		if(request.getParameter("subscribed") != null)
+			modelAndView.addObject("successes", "<strong>Sucesso!</strong> Obrigado por se cadastrar. Faça seu login e usufrua de todas as funcionalidades da Sportaholic.");
 		
 		return modelAndView;
 	}
