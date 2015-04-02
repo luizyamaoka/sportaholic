@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -79,6 +80,16 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		}
 		
 		return status;
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public List<ProductCategory> getEagerBySet(Integer sportId) throws Exception {
+		List<ProductCategory> productCategories = this.productCategoryDao.getBySet(sportId);
+		for(ProductCategory productCategory : productCategories) {
+			Hibernate.initialize(productCategory.getProductTypes());
+		}
+		return productCategories;
 	}
 
 }

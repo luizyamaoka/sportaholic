@@ -68,16 +68,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public List<Product> getActivePaginated(int pageNumber, int pageSize)
-			throws Exception {
-		return this.productDao.getActivePaginated(pageNumber, pageSize);
-	}
-
-	@Override
-	@Transactional(rollbackFor = Exception.class)
-	public List<Product> getActiveBySetPaginated(int sportId, int pageNumber,
-			int pageSize) throws Exception {
-		return this.productDao.getActiveBySetPaginated(sportId, pageNumber, pageSize);
+	public List<Product> getActiveBySetPaginated(Integer sportId, Integer productTypeId, 
+			int pageNumber, int pageSize) throws Exception {
+		return this.productDao.getActiveBySetPaginated(sportId, productTypeId, pageNumber, pageSize);
 	}
 
 }

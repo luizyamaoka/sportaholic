@@ -14,4 +14,5 @@ public interface ProductCategoryService {
 	
 	public List<String> update(ProductCategory productCategory) throws Exception;
 	
+	public List<ProductCategory> getEagerBySet(Integer sportId) throws Exception;
 }

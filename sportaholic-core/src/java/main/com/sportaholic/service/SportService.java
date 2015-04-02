@@ -10,4 +10,6 @@ public interface SportService {
 	
 	public List<Sport> getAll() throws Exception;
 	
+	public List<Sport> getEagerBySet(Integer sportId) throws Exception;
+	
 }

@@ -16,6 +16,7 @@ import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.ClientService;
 import com.sportaholic.service.ProductService;
 import com.sportaholic.service.ProductViewService;
+import com.sportaholic.service.SportService;
 
 @Controller
 @RequestMapping(UrlConstants.URL_PRODUCT)
@@ -24,13 +25,16 @@ public class ProductController {
 	private ProductService productService;
 	private ProductViewService productViewService;
 	private ClientService clientService;
+	private SportService sportService;
 	
 	@Autowired
 	public ProductController(ProductService productService,
-			ProductViewService productViewService, ClientService clientService) {
+			ProductViewService productViewService, ClientService clientService,
+			SportService sportService) {
 		this.productService = productService;
 		this.productViewService = productViewService;
 		this.clientService = clientService;
+		this.sportService = sportService;
 	}
 	
 	@RequestMapping("/{id}")
@@ -53,6 +57,19 @@ public class ProductController {
 					this.productViewService.create(productView);
 			}
 			
+			return modelAndView;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ModelAndView("errors/unexpected-error");
+		}
+	}
+	
+	@RequestMapping("")
+	public ModelAndView index() {
+		try {
+			ModelAndView modelAndView = new ModelAndView("products/index");			
+			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(null, null, 1, 12));
+			modelAndView.addObject("sports", this.sportService.getEagerBySet(null));
 			return modelAndView;
 		} catch (Exception e) {
 			e.printStackTrace();

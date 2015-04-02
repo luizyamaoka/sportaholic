@@ -48,7 +48,7 @@ public class StaticPageController {
 				modelAndView.addObject("successes", "<strong>Bem-vindo!</strong> Login efetuado com sucesso.");
 			
 			modelAndView.addObject("articles", this.articleService.getPublishedPaginated(1, 3));
-			modelAndView.addObject("products", this.productService.getActivePaginated(1, 4));
+			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(null, null, 1, 4));
 			
 			return modelAndView;
 		} catch (Exception e) {

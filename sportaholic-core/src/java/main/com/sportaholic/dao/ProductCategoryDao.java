@@ -1,5 +1,7 @@
 package com.sportaholic.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,6 +26,17 @@ public class ProductCategoryDao extends GenericDao<ProductCategory, Integer> {
 		criteria.add(Restrictions.eq("name", name));
 		ProductCategory productCategory = (ProductCategory) criteria.uniqueResult();
 		return productCategory;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ProductCategory> getBySet(Integer sportId) throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(ProductCategory.class);
+		criteria.createAlias("sport", "s");
+		if (sportId != null) criteria.add(Restrictions.eq("s.id", sportId));
+		List<ProductCategory> productCategories = criteria.list();
+		return productCategories;
 	}
 	
 }
