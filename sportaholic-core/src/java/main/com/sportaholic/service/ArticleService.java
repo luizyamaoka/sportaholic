@@ -14,6 +14,6 @@ public interface ArticleService {
 	
 	public List<Article> getPublishedPaginated(int pageNumber, int pageSize) throws Exception;
 	
-	public List<Article> getPublishedBySet(Integer sportId, Integer articleTypeId) throws Exception;
+	public List<Article> getPublishedBySetPaginated(Integer sportId, Integer articleTypeId, int pageNumber, int pageSize) throws Exception;
 	
 }

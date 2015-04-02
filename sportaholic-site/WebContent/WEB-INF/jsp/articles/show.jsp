@@ -82,7 +82,10 @@
 	  
 	  </div>
 	  
-	  <c:import url="/WEB-INF/jsp/articles/_menu.jsp" />
+	  <div class="col-sm-3 col-sm-pull-9">
+        <h4 class="page-header">Leia mais</h4>
+	    <c:import url="/WEB-INF/jsp/articles/_menu.jsp" />
+	  </div>
 	  
     </div>
     </div>

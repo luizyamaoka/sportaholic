@@ -24,7 +24,7 @@ public class ArticleDao extends GenericDao<Article, Integer> {
 		super(sessionFactory, Article.class);
 	}
 
-	public List<Article> getPublishedBySet(Integer sportId, Integer articleTypeId) {
+	public List<Article> getPublishedBySetPaginated(Integer sportId, Integer articleTypeId, int pageNumber, int pageSize) {
 		Session session = null;
 		session = this.sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Article.class);
@@ -53,6 +53,8 @@ public class ArticleDao extends GenericDao<Article, Integer> {
 		}
 		
 		criteria.add(Restrictions.le("publishedAt", Calendar.getInstance().getTime()));
+		criteria.setFirstResult((pageNumber - 1) * pageSize);
+		criteria.setMaxResults(pageSize);
 		criteria.addOrder(Order.desc("publishedAt"));
 		
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);

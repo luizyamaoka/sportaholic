@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="description" content="${activeUri.metaDescription}">
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
-    <title>Nossos autores</title>
+    <title>${activeUri.name} | Sportaholic</title>
     <c:import url="/WEB-INF/jsp/shared/css.jsp" />
     <c:import url="/WEB-INF/jsp/shared/js.jsp" />
   </head>
@@ -24,18 +24,20 @@
     <div class="row">
 
       <div class="col-sm-9 col-sm-push-3">
-        <c:import url="/WEB-INF/jsp/authors/_authors.jsp" />
+        <c:import url="/WEB-INF/jsp/products/_products.jsp" />
 	  </div>
 	  
 	  <div class="col-sm-3 col-sm-pull-9">
-        <h4 class="page-header">Autores</h4>
-	    <c:import url="/WEB-INF/jsp/authors/_menu.jsp" />
+	    <h4 class="page-header">Produtos</h4>
+	    <c:import url="/WEB-INF/jsp/products/_menu.jsp" />
 	  </div>
 	  
     </div>
     </div>
     
     <c:import url="/WEB-INF/jsp/shared/footer.jsp" />
+    
+    
     
   </body>
 </html>

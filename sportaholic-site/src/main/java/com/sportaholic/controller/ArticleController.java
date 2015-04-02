@@ -7,7 +7,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sportaholic.model.Article;
@@ -70,13 +69,11 @@ public class ArticleController {
 	}
 	
 	@RequestMapping("")
-	public ModelAndView index(HttpServletRequest request,
-			@RequestParam(value="sportId", required=false) Integer sportId,
-			@RequestParam(value="articleTypeId", required=false) Integer articleTypeId) {
+	public ModelAndView index(HttpServletRequest request) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("articles/index");
 			
-			modelAndView.addObject("articles", this.articleService.getPublishedBySet(sportId, articleTypeId));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySetPaginated(null, null, 1, 12));
 			modelAndView.addObject("sports", this.sportService.getAll());
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
 			return modelAndView;

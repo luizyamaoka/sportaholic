@@ -41,7 +41,25 @@
     <div class="row">
 
       <div class="col-sm-9 col-sm-push-3">
-        <c:import url="/WEB-INF/jsp/articles/_articles.jsp" />
+        <h3 class="page-header">Últimos artigos</h3>
+    
+          <c:import url="/WEB-INF/jsp/articles/_articles.jsp" />
+      
+          <nav>
+            <ul class="pager">
+              <li class="next"><a href="${uriService.getFriendlyUri(sport.articlesUri)}">Ver mais <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+          </nav>
+      
+          <h3 class="page-header">Produtos mais vendidos</h3>
+    
+          <c:import url="/WEB-INF/jsp/products/_products.jsp" />
+      
+          <nav>
+            <ul class="pager">
+              <li class="next"><a href="${uriService.getFriendlyUri(sport.productsUri)}">Ver mais <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+          </nav>
 	  </div>
 	  
 	  <c:import url="/WEB-INF/jsp/articles/_menu.jsp" />

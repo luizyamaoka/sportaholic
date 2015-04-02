@@ -32,5 +32,21 @@ public class ProductDao extends GenericDao<Product, Integer> {
 		List<Product> objects = criteria.list();
 		return objects;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Product> getActiveBySetPaginated(int sportId, int pageNumber, int pageSize) throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Product.class);
+		criteria.createAlias("productIsSports", "pis");
+		criteria.createAlias("pis.sport", "s");
+		criteria.add(Restrictions.eq("s.id", sportId));
+		criteria.add(Restrictions.eq("isActive", true));
+		criteria.setFirstResult((pageNumber - 1) * pageSize);
+		criteria.setMaxResults(pageSize);
+		criteria.addOrder(Order.asc("name"));
+		List<Product> objects = criteria.list();
+		return objects;
+	}
 
 }

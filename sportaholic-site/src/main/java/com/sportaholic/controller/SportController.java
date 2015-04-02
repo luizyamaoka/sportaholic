@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.ArticleService;
 import com.sportaholic.service.ArticleTypeService;
+import com.sportaholic.service.ProductCategoryService;
+import com.sportaholic.service.ProductService;
 import com.sportaholic.service.SportService;
 
 @Controller
@@ -18,13 +20,18 @@ public class SportController {
 	private SportService sportService;
 	private ArticleService articleService;
 	private ArticleTypeService articleTypeService;
+	private ProductService productService;
+	private ProductCategoryService productCategoryService;
 	
 	@Autowired
 	public SportController(SportService sportService, ArticleService articleService,
-			ArticleTypeService articleTypeService) {
+			ArticleTypeService articleTypeService, ProductService productService,
+			ProductCategoryService productCategoryService) {
 		this.sportService = sportService;
 		this.articleService = articleService;
 		this.articleTypeService = articleTypeService;
+		this.productService = productService;
+		this.productCategoryService = productCategoryService;
 	}
 	
 	@RequestMapping("")
@@ -44,7 +51,8 @@ public class SportController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("sports/show");
 			modelAndView.addObject("sport", this.sportService.get(id));
-			modelAndView.addObject("articles", this.articleService.getPublishedBySet(id, null));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySetPaginated(id, null, 1, 3));
+			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(id, 1, 4));
 			modelAndView.addObject("sports", this.sportService.getAll());
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
 			return modelAndView;
@@ -58,7 +66,7 @@ public class SportController {
 	public ModelAndView getArticles(@PathVariable Integer id) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("articles/index");
-			modelAndView.addObject("articles", this.articleService.getPublishedBySet(id, null));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySetPaginated(id, null, 1, 12));
 			modelAndView.addObject("sports", this.sportService.getAll());
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
 			
@@ -69,13 +77,28 @@ public class SportController {
 		}
 	}
 	
-	@RequestMapping("/{id}/{articleTypeId}")
+	@RequestMapping("/{id}/articles/{articleTypeId}")
 	public ModelAndView getArticleTypes(@PathVariable Integer id, @PathVariable Integer articleTypeId) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("articles/index");
-			modelAndView.addObject("articles", this.articleService.getPublishedBySet(id, articleTypeId));
+			modelAndView.addObject("articles", this.articleService.getPublishedBySetPaginated(id, articleTypeId, 1, 12));
 			modelAndView.addObject("sports", this.sportService.getAll());
 			modelAndView.addObject("articleTypes", this.articleTypeService.getAll());
+			
+			return modelAndView;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ModelAndView("errors/unexpected-error");
+		}
+	}
+	
+	@RequestMapping("/{id}/products")
+	public ModelAndView getProducts(@PathVariable Integer id) {
+		try {
+			ModelAndView modelAndView = new ModelAndView("products/index");
+			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(id, 1, 12));
+			modelAndView.addObject("sports", this.sportService.getAll());
+			modelAndView.addObject("productCategories", this.productCategoryService.getAll());
 			
 			return modelAndView;
 		} catch (Exception e) {

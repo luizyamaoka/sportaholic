@@ -1,7 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div class="col-sm-3 col-sm-pull-9">
-  <h4 class="page-header">Leia mais</h4>
   <div class="list-group">
     <c:forEach var="sport" items="${sports}">
       <a href="#menu-${sport.id}" class="list-group-item menu-header" data-menu="${sport.id}" data-toggle="collapse" aria-expanded="false" aria-controls="collapseExample">
@@ -17,9 +15,7 @@
      </c:forEach>
    </div>
     </c:forEach>
-     </div>
-</div>
-	  
+     </div>	  
 	  
 <script>
   $(document).ready(function(){

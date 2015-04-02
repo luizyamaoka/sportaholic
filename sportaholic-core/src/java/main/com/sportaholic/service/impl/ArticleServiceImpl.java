@@ -38,9 +38,9 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	@Transactional(rollbackFor = Exception.class)
-	public List<Article> getPublishedBySet(Integer sportId, Integer articleTypeId)
+	public List<Article> getPublishedBySetPaginated(Integer sportId, Integer articleTypeId, int pageNumber, int pageSize)
 			throws Exception {
-		return this.articleDao.getPublishedBySet(sportId, articleTypeId);
+		return this.articleDao.getPublishedBySetPaginated(sportId, articleTypeId, pageNumber, pageSize);
 	}
 
 	@Override
