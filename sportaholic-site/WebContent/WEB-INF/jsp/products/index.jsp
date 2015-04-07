@@ -28,7 +28,6 @@
 	  </div>
 	  
 	  <div class="col-sm-3 col-sm-pull-9">
-	    <h4 class="page-header">Produtos</h4>
 	    <c:import url="/WEB-INF/jsp/products/_menu.jsp" />
 	  </div>
 	  
