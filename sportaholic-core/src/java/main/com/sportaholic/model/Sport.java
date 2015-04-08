@@ -115,11 +115,6 @@ public class Sport {
 	public String getProductsUri() {
 		return UrlConstants.URL_SPORT + "/" + this.id + "/products";
 	}
-	
-	@Transient
-	public String getProductTypesUri(Integer productTypeId) {
-		return UrlConstants.URL_SPORT + "/" + this.id + "/products/" + productTypeId;
-	}
 
 	public String getBanner() {
 		return banner;
