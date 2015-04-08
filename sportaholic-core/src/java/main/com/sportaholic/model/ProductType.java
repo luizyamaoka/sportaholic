@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name=DomainConstants.TB_PRODUCT_TYPE)
@@ -84,6 +85,11 @@ public class ProductType {
 
 	public void setProductIsTypes(List<ProductIsType> productIsTypes) {
 		this.productIsTypes = productIsTypes;
+	}
+	
+	@Transient
+	public String getUri() {
+		return UrlConstants.URL_PRODUCT_TYPE + "/" + this.id;
 	}
 	
 }

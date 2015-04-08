@@ -101,19 +101,5 @@ public class SportController {
 			return new ModelAndView("errors/unexpected-error");
 		}
 	}
-	
-	@RequestMapping("/{id}/products/{productTypeId}")
-	public ModelAndView getProductTypes(@PathVariable Integer id, @PathVariable Integer productTypeId) {
-		try {
-			ModelAndView modelAndView = new ModelAndView("products/index");
-			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(id, productTypeId, 1, 12));
-			modelAndView.addObject("sports", this.sportService.getEagerBySet(id));
-			
-			return modelAndView;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return new ModelAndView("errors/unexpected-error");
-		}
-	}
 
 }

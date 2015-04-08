@@ -13,7 +13,7 @@
       </a>
       <div class="collapse" id="menu-${productCategory.id}" aria-expanded="false">
         <c:forEach var="productType" items="${productCategory.productTypes}">
-          <a href="${uriService.getFriendlyUri(sport.getProductTypesUri(productType.id))}" class="list-group-item">&nbsp;&nbsp;&nbsp;${productType.name}</a>
+          <a href="${uriService.getFriendlyUri(productType.uri)}" class="list-group-item">&nbsp;&nbsp;&nbsp;${productType.name}</a>
         </c:forEach>
       </div>
     </c:forEach>
