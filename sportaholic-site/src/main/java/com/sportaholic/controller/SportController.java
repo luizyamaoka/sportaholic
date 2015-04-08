@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.ArticleService;
 import com.sportaholic.service.ArticleTypeService;
-import com.sportaholic.service.ProductCategoryService;
 import com.sportaholic.service.ProductService;
 import com.sportaholic.service.SportService;
 
@@ -21,17 +20,14 @@ public class SportController {
 	private ArticleService articleService;
 	private ArticleTypeService articleTypeService;
 	private ProductService productService;
-	private ProductCategoryService productCategoryService;
 	
 	@Autowired
 	public SportController(SportService sportService, ArticleService articleService,
-			ArticleTypeService articleTypeService, ProductService productService,
-			ProductCategoryService productCategoryService) {
+			ArticleTypeService articleTypeService, ProductService productService) {
 		this.sportService = sportService;
 		this.articleService = articleService;
 		this.articleTypeService = articleTypeService;
 		this.productService = productService;
-		this.productCategoryService = productCategoryService;
 	}
 	
 	@RequestMapping("")

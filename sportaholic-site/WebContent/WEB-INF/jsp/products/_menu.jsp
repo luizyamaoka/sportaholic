@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:forEach var="sport" items="${sports}">
+  <c:if test="${not empty sport.productCategories}">
   <h5 class="page-header">${sport.name}</h5>
   <div class="list-group">
     <c:forEach var="productCategory" items="${sport.productCategories}">
@@ -17,6 +18,7 @@
       </div>
     </c:forEach>
   </div>	  
+  </c:if>
 </c:forEach>
 	  
 <script>
