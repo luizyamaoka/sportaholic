@@ -12,7 +12,8 @@
       <div class="product-carousel">
         <img class="product-image" src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>${product.image}" data-holder-rendered="true">
         <div class="product-info">
-          <h4><span class="brand">${product.brand.name}</span><br />${product.name}</h4>
+          <h4 class="product-brand">${product.brand.name}</h4>
+          <h4 class="product-name">${product.name}</h4>
           <p class="product-price">
             R$ <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0.00" minFractionDigits="2" maxFractionDigits="2"/>
           </p>

@@ -134,8 +134,12 @@ body {
   font-size: 14px;
 }
 
-.product-carousel > .product-info > h4 > .brand {
+.product-carousel > .product-info > h4.product-brand {
   font-weight: bold;
+  height: 25px;
+}
+.product-carousel > .product-info > h4.product-name {
+  height: 40px;
 }
 
 .product-carousel > .product-info > p {
