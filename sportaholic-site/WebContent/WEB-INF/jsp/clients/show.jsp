@@ -1,24 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
-    <title>${client.completeName}</title>
-    <c:import url="/WEB-INF/jsp/shared/css.jsp" />
-    <c:import url="/WEB-INF/jsp/shared/js.jsp" />
-  </head>
-  <body>
-    <c:import url="/WEB-INF/jsp/shared/tags.jsp" />
-    
-    <c:import url="/WEB-INF/jsp/shared/header.jsp" />
-    
-    <div class="container theme-showcase" role="main">
-    
-      <c:import url="/WEB-INF/jsp/shared/alert.jsp" />
-      <c:import url="/WEB-INF/jsp/shared/breadcrumb.jsp" />
-
       <div class="center-form">
         <form class="form-horizontal">
         <div class="form-group row">
@@ -60,10 +42,3 @@
 		
       </form>
       </div>
-
-    </div>
-    
-    <c:import url="/WEB-INF/jsp/shared/footer.jsp" />
-    
-  </body>
-</html>

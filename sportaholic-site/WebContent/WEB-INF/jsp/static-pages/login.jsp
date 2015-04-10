@@ -1,24 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<html>
-<head>
-  <meta charset="utf-8">
-  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
-  <title>Login</title>
-  <c:import url="/WEB-INF/jsp/shared/css.jsp" />
-  <c:import url="/WEB-INF/jsp/shared/js.jsp" />
-</head>
-  <body>
-    <c:import url="/WEB-INF/jsp/shared/tags.jsp" />
-  
-    <div id="wrapper">
-  
-      <c:import url="/WEB-INF/jsp/shared/header.jsp" /> 
-  
-  	  <div class="container theme-showcase" role="main">
-	    
-	    <c:import url="/WEB-INF/jsp/shared/alert.jsp" /> 
-	    <c:import url="/WEB-INF/jsp/shared/breadcrumb.jsp" />
 	      
 	    <div class="center-form">
           <form class="form-horizontal" action="/<c:url value='j_spring_security_check' />" method="post">
@@ -54,12 +34,3 @@
 		
           </form>
         </div>
-    
-      </div>
-    
-      <c:import url="/WEB-INF/jsp/shared/footer.jsp" />
-    
-    </div>
-  
-  </body>
-</html>

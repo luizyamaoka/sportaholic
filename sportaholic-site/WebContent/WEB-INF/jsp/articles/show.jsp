@@ -2,19 +2,8 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="author" content="${article.author.name}">
-    <meta name="description" content="${activeUri.metaDescription}">
-    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
-    <title>${article.title}</title>
-    <c:import url="/WEB-INF/jsp/shared/css.jsp" />
-    <c:import url="/WEB-INF/jsp/shared/js.jsp" />
-  </head>
-  <body>
-    <c:import url="/WEB-INF/jsp/shared/tags.jsp" />
     
+    <meta name="author" content="${article.author.name}">
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -24,13 +13,6 @@
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-    
-    <c:import url="/WEB-INF/jsp/shared/header.jsp" />
-    
-    <div class="container theme-showcase" role="main">
-    
-    <c:import url="/WEB-INF/jsp/shared/alert.jsp" />
-    <c:import url="/WEB-INF/jsp/shared/breadcrumb.jsp" />
 
     <div class="row">
 
@@ -88,9 +70,3 @@
 	  </div>
 	  
     </div>
-    </div>
-    
-    <c:import url="/WEB-INF/jsp/shared/footer.jsp" />
-    
-  </body>
-</html>

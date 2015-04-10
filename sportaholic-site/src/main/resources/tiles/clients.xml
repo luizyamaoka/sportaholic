@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+  <definition name="clients/edit" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/clients/edit.jsp" />
+  </definition>
+  
+  <definition name="clients/edit-password" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/clients/edit-password.jsp" />
+  </definition>
+  
+  <definition name="clients/forgot-password" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/clients/forgot-password.jsp" />
+  </definition>
+  
+  <definition name="clients/new" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/clients/new.jsp" />
+  </definition>
+  
+  <definition name="clients/show" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/clients/show.jsp" />
+  </definition>
+	
+</tiles-definitions>

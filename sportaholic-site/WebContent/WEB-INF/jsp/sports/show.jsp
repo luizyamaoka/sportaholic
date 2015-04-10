@@ -1,31 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page import="com.sportaholic.EnvironmentConstants" %>
-
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
-    <meta name="description" content="${activeUri.metaDescription}">
-    <title>${sport.name} | Sportaholic</title>
-    <c:import url="/WEB-INF/jsp/shared/css.jsp" />
-    <c:import url="/WEB-INF/jsp/shared/js.jsp" />
-  </head>
-  <body>
-    <c:import url="/WEB-INF/jsp/shared/tags.jsp" />
-    
-    <c:import url="/WEB-INF/jsp/shared/header.jsp" />
-    
-    <div class="container theme-showcase" role="main">
-    
-      <c:import url="/WEB-INF/jsp/shared/alert.jsp" />
-      <c:import url="/WEB-INF/jsp/shared/breadcrumb.jsp" />
-    
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox" style="margin-bottom: 20px;">
         <div class="item active">
-          <img src="<%= EnvironmentConstants.IMAGES_URL %>${sport.banner}" alt="${sport.name}">
+          <img src="<%= com.sportaholic.EnvironmentConstants.IMAGES_URL %>${sport.banner}" alt="${sport.name}">
           <div class="carousel-caption hidden-xs">
             <h1>${sport.name}</h1>
             <p>${sport.description}</p>
@@ -68,11 +46,3 @@
 	  </div>
 	  
     </div>
-
-</div>
-
-    
-    <c:import url="/WEB-INF/jsp/shared/footer.jsp" />
-    
-  </body>
-</html>
