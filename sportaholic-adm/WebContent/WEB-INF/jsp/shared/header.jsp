@@ -33,9 +33,10 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Url <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Helper <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/uris">Uris</a></li>
+            <li><a href="/amazon-s3-files">Imagens</a></li>
           </ul>
         </li>
       </ul>

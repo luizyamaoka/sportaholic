@@ -18,6 +18,8 @@
  <mvc:annotation-driven />
  <mvc:resources mapping="/favicon.ico" location="/resources/favicon.ico" order="0"/>
 
+ <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
   <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
     <property name="prefix" value="/WEB-INF/jsp/" />
