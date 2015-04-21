@@ -74,7 +74,7 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.create(uri);
 			
-			if (productDto.getImageFile() != null) {
+			if (productDto.getImageFile() != null && !productDto.getImageFile().isEmpty()) {
 				this.amazonS3Service.upload(product.getImage(), productDto.getImageFile().getInputStream());
 			}
 			
@@ -124,7 +124,7 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.update(uri);
 			
-			if (productDto.getImageFile() != null) {
+			if (productDto.getImageFile() != null && !productDto.getImageFile().isEmpty()) {
 				this.amazonS3Service.upload(product.getImage(), productDto.getImageFile().getInputStream());
 			}
 			

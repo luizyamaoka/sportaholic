@@ -52,7 +52,7 @@ public class AdmBrandServiceImpl implements AdmBrandService {
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.create(uri);
 			
-			if (brandDto.getLogoFile() != null) {
+			if (brandDto.getLogoFile() != null && !brandDto.getLogoFile().isEmpty()) {
 				this.amazonS3Service.upload(brand.getLogo(), brandDto.getLogoFile().getInputStream());
 			}
 			
@@ -76,7 +76,7 @@ public class AdmBrandServiceImpl implements AdmBrandService {
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.update(uri);
 			
-			if (brandDto.getLogoFile() != null) {
+			if (brandDto.getLogoFile() != null && !brandDto.getLogoFile().isEmpty()) {
 				this.amazonS3Service.upload(brand.getLogo(), brandDto.getLogoFile().getInputStream());
 			}
 			

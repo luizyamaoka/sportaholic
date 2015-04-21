@@ -52,7 +52,7 @@ public class AdmSportServiceImpl implements AdmSportService {
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.create(uri);
 			
-			if (sportDto.getBannerImage() != null) {
+			if (sportDto.getBannerImage() != null && !sportDto.getBannerImage().isEmpty()) {
 				this.amazonS3Service.upload(sport.getBanner(), sportDto.getBannerImage().getInputStream());
 			}
 			
@@ -76,7 +76,7 @@ public class AdmSportServiceImpl implements AdmSportService {
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.update(uri);
 			
-			if (sportDto.getBannerImage() != null) {
+			if (sportDto.getBannerImage() != null && !sportDto.getBannerImage().isEmpty()) {
 				this.amazonS3Service.upload(sport.getBanner(), sportDto.getBannerImage().getInputStream());
 			}
 			

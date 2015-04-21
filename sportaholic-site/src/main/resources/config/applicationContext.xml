@@ -19,12 +19,6 @@
  <mvc:resources mapping="/robots.txt" location="/resources/robots.txt" order="0"/>
  <mvc:resources mapping="/favicon.ico" location="/resources/favicon.ico" order="0"/>
 
-  <!-- bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-    <property name="prefix" value="/WEB-INF/jsp/" />
-    <property name="suffix" value=".jsp" />
-  </bean> -->
-
   <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
   	p:driverClassName="org.postgresql.Driver" 
   	p:url="jdbc:postgresql://54.149.164.253:5432/sportaholic" p:username="sportaholic" p:password="sportaholic" />-->
