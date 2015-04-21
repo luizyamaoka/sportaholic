@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div class="center-form">
-  <form:form class="form-horizontal" modelAttribute="brandDto">
+  <form:form class="form-horizontal" modelAttribute="brandDto" enctype="multipart/form-data">
     <div class="form-group">
       <label for="nameInput" class="control-label col-sm-4 col-xs-12">Nome * </label>
       <div class="col-sm-8 col-xs-12">
@@ -13,6 +13,12 @@
       <label for="logoInput" class="control-label col-sm-4 col-xs-12">Logo * </label>
       <div class="col-sm-8 col-xs-12">
         <form:input path="logo" class="form-control" id="logoInput" placeholder="Logo" required="true" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="logoFileInput" class="control-label col-sm-4 col-xs-12">Banner (200x100px) </label>
+      <div class="col-sm-8 col-xs-12">
+        <form:input type="file" path="logoFile" class="form-control" id="logoFileInput" placeholder="Logo" />
       </div>
     </div>
     <div class="form-group">

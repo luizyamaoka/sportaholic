@@ -1,11 +1,14 @@
 package com.sportaholic.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BrandDto {
 
 	private Integer id;
 	private String name;
 	private String description;
 	private String logo;
+	private MultipartFile logoFile;
 	
 	private Integer uriId;
 	private String friendlyUri;
@@ -66,6 +69,12 @@ public class BrandDto {
 	}
 	public void setMetaDescription(String metaDescription) {
 		this.metaDescription = metaDescription;
+	}
+	public MultipartFile getLogoFile() {
+		return logoFile;
+	}
+	public void setLogoFile(MultipartFile logoFile) {
+		this.logoFile = logoFile;
 	}
 	
 	

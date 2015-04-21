@@ -15,21 +15,24 @@ import com.sportaholic.model.Brand;
 import com.sportaholic.model.Uri;
 import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.AdmBrandService;
+import com.sportaholic.service.AmazonS3Service;
 import com.sportaholic.transformer.BrandDtoTransformer;
 
 @Component
 public class AdmBrandServiceImpl implements AdmBrandService {
 
-	public BrandDao brandDao;
-	public UriDao uriDao;
-	public BrandDtoTransformer brandDtoTransformer;
+	private BrandDao brandDao;
+	private UriDao uriDao;
+	private BrandDtoTransformer brandDtoTransformer;
+	private AmazonS3Service amazonS3Service;
 	
 	@Autowired
 	public AdmBrandServiceImpl(BrandDao brandDao, UriDao uriDao, 
-			BrandDtoTransformer brandDtoTransformer) {
+			BrandDtoTransformer brandDtoTransformer, AmazonS3Service amazonS3Service) {
 		this.brandDao = brandDao;
 		this.uriDao = uriDao;
 		this.brandDtoTransformer = brandDtoTransformer;
+		this.amazonS3Service = amazonS3Service;
 	}
 	
 	@Override
@@ -48,6 +51,10 @@ public class AdmBrandServiceImpl implements AdmBrandService {
 			uri.setCreatedAt(Calendar.getInstance().getTime());
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.create(uri);
+			
+			if (brandDto.getLogoFile() != null) {
+				this.amazonS3Service.upload(brand.getLogo(), brandDto.getLogoFile().getInputStream());
+			}
 			
 			status.add(brandId.toString());
 		}
@@ -68,6 +75,10 @@ public class AdmBrandServiceImpl implements AdmBrandService {
 			Uri uri = this.brandDtoTransformer.brandDtoToUri(brandDto);
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.update(uri);
+			
+			if (brandDto.getLogoFile() != null) {
+				this.amazonS3Service.upload(brand.getLogo(), brandDto.getLogoFile().getInputStream());
+			}
 			
 			status.add(brandDto.getId().toString());
 		}
