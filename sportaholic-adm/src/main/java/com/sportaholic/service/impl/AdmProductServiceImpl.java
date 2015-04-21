@@ -19,6 +19,7 @@ import com.sportaholic.model.ProductIsType;
 import com.sportaholic.model.Uri;
 import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.AdmProductService;
+import com.sportaholic.service.AmazonS3Service;
 import com.sportaholic.transformer.ProductDtoTransformer;
 
 @Component
@@ -30,17 +31,20 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 	private ProductDtoTransformer productDtoTransformer;
 	private ProductIsSportDao productIsSportDao;
 	private ProductIsTypeDao productIsTypeDao;
+	private AmazonS3Service amazonS3Service;
 	
 	@Autowired
 	public AdmProductServiceImpl(ProductDao productDao, UriDao uriDao,
 			ProductDtoTransformer productDtoTransformer,
-			ProductIsSportDao productIsSportDao, ProductIsTypeDao productIsTypeDao) {
+			ProductIsSportDao productIsSportDao, ProductIsTypeDao productIsTypeDao,
+			AmazonS3Service amazonS3Service) {
 		super(productDao);
 		this.productDao = productDao;
 		this.uriDao = uriDao;
 		this.productDtoTransformer = productDtoTransformer;
 		this.productIsSportDao = productIsSportDao;
 		this.productIsTypeDao = productIsTypeDao;
+		this.amazonS3Service = amazonS3Service;
 	}
 	
 	@Override
@@ -69,6 +73,10 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 			uri.setCreatedAt(Calendar.getInstance().getTime());
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.create(uri);
+			
+			if (productDto.getImageFile() != null) {
+				this.amazonS3Service.upload(product.getImage(), productDto.getImageFile().getInputStream());
+			}
 			
 			status.add(productId.toString());
 		}
@@ -115,6 +123,10 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 			Uri uri = this.productDtoTransformer.productDtoToUri(productDto);
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.update(uri);
+			
+			if (productDto.getImageFile() != null) {
+				this.amazonS3Service.upload(product.getImage(), productDto.getImageFile().getInputStream());
+			}
 			
 		}
 		

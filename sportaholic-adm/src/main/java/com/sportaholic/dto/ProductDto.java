@@ -3,12 +3,15 @@ package com.sportaholic.dto;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductDto {
 
 	private Integer id;
 	private String name;
 	private String description;
 	private String image;
+	private MultipartFile imageFile;
 	private BigDecimal price;
 	private Boolean isActive;
 	private Integer inStock;
@@ -118,6 +121,12 @@ public class ProductDto {
 	}
 	public void setMeliUrl(String meliUrl) {
 		this.meliUrl = meliUrl;
+	}
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
 	}
 	
 }

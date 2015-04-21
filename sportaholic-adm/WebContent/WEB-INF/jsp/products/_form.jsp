@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div class="center-form">
-        <form:form class="form-horizontal" modelAttribute="productDto">
+        <form:form class="form-horizontal" modelAttribute="productDto" enctype="multipart/form-data">
           <div class="form-group">
             <label for="nameInput" class="control-label col-sm-4 col-xs-12">Nome * </label>
             <div class="col-sm-8 col-xs-12">
@@ -21,6 +21,12 @@
 			  <form:input path="image" class="form-control" id="imageInput" placeholder="Imagem" required="true" />
 			</div>
 		  </div>
+		  <div class="form-group">
+            <label for="imageFileInput" class="control-label col-sm-4 col-xs-12">Banner (400x400px) </label>
+            <div class="col-sm-8 col-xs-12">
+              <form:input type="file" path="imageFile" class="form-control" id="imageFileInput" placeholder="Imagem" />
+            </div>
+          </div>
 		  <div class="form-group">
             <label for="priceInput" class="control-label col-sm-4 col-xs-12">Preço * </label>
             <div class="col-sm-8 col-xs-12">
