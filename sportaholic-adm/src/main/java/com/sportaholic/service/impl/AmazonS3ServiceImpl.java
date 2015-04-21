@@ -29,6 +29,7 @@ public class AmazonS3ServiceImpl implements AmazonS3Service {
 		
 		ObjectMetadata objectMetadata = new ObjectMetadata();
 		objectMetadata.setContentType("image/png");
+		objectMetadata.setCacheControl("max-age=1296000");
 		PutObjectRequest putObjectRequest = 
 				new PutObjectRequest(BUCKETNAME, ROOT_FOLDER + targetFileName, inputStream, objectMetadata)
 				.withCannedAcl(CannedAccessControlList.PublicRead);
