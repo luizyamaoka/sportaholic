@@ -15,6 +15,7 @@ import com.sportaholic.model.Sport;
 import com.sportaholic.model.Uri;
 import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.AdmSportService;
+import com.sportaholic.service.AmazonS3Service;
 import com.sportaholic.transformer.SportDtoTransformer;
 
 @Component
@@ -23,12 +24,15 @@ public class AdmSportServiceImpl implements AdmSportService {
 	private SportDao sportDao;
 	private UriDao uriDao;
 	private SportDtoTransformer sportDtoTransformer;
+	private AmazonS3Service amazonS3Service;
 	
 	@Autowired
-	public AdmSportServiceImpl(SportDao sportDao, UriDao uriDao, SportDtoTransformer sportDtoTransformer) {
+	public AdmSportServiceImpl(SportDao sportDao, UriDao uriDao, SportDtoTransformer sportDtoTransformer,
+			AmazonS3Service amazonS3Service) {
 		this.sportDao = sportDao;
 		this.uriDao = uriDao;
 		this.sportDtoTransformer = sportDtoTransformer;
+		this.amazonS3Service = amazonS3Service;
 	}
 	
 	@Override
@@ -47,6 +51,10 @@ public class AdmSportServiceImpl implements AdmSportService {
 			uri.setCreatedAt(Calendar.getInstance().getTime());
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.create(uri);
+			
+			if (sportDto.getBannerImage() != null) {
+				this.amazonS3Service.upload(sport.getBanner(), sportDto.getBannerImage().getInputStream());
+			}
 			
 			status.add(sportId.toString());
 		}
@@ -67,6 +75,10 @@ public class AdmSportServiceImpl implements AdmSportService {
 			Uri uri = this.sportDtoTransformer.sportDtoToUri(sportDto);
 			uri.setUpdatedAt(Calendar.getInstance().getTime());
 			this.uriDao.update(uri);
+			
+			if (sportDto.getBannerImage() != null) {
+				this.amazonS3Service.upload(sport.getBanner(), sportDto.getBannerImage().getInputStream());
+			}
 			
 			status.add(sportDto.getId().toString());
 		}

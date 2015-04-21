@@ -20,7 +20,6 @@ import com.sportaholic.dto.SportDto;
 import com.sportaholic.model.Sport;
 import com.sportaholic.model.UrlConstants;
 import com.sportaholic.service.AdmSportService;
-import com.sportaholic.service.AmazonS3Service;
 import com.sportaholic.service.SportService;
 import com.sportaholic.service.UriService;
 import com.sportaholic.transformer.SportDtoTransformer;
@@ -33,7 +32,6 @@ public class SportController {
 	private UriService uriService;
 	private AdmSportService admSportService;
 	private SportDtoTransformer sportDtoTransformer;
-	private AmazonS3Service amazonS3Service;
 	
 	private static final Map<String, String> ERROR_MESSAGES;
 	static {
@@ -53,13 +51,11 @@ public class SportController {
 	
 	@Autowired
 	public SportController(SportService sportService, UriService uriService, 
-			AdmSportService admSportService, SportDtoTransformer sportDtoTransformer,
-			AmazonS3Service amazonS3Service) {
+			AdmSportService admSportService, SportDtoTransformer sportDtoTransformer) {
 		this.sportService = sportService;
 		this.uriService = uriService;
 		this.admSportService = admSportService;
 		this.sportDtoTransformer = sportDtoTransformer;
-		this.amazonS3Service = amazonS3Service;
 	}
 	
 	@RequestMapping("")
@@ -67,8 +63,6 @@ public class SportController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("sports/index");
 			modelAndView.addObject("sports", this.sportService.getAll());
-			//this.amazonS3Service.upload(null, null);
-			//this.amazonS3Service.delete("objectKey");
 			return modelAndView;
 			
 		} catch (Exception e) {
