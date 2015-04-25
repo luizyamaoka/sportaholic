@@ -1,0 +1,14 @@
+<groups xmlns="http://www.isdc.ro/wro">
+    <group name="all">
+    	<css>/resources/css/jquery/*.css</css>
+    	<css>/resources/css/bootstrap/*.css</css>
+        <css>/resources/css/main.css</css>
+        <js>/resources/js/jquery/*.js</js>
+        <js>/resources/js/bootstrap/*.js</js>
+        <js>/resources/js/main.js</js>
+    </group>
+    
+    <group name="jquery">
+      <js>/resources/js/jquery/jquery.js</js>
+    </group>
+</groups>   
