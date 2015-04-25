@@ -121,6 +121,11 @@
 	  <artifactId>wro4j-core</artifactId>
 	  <version>1.7.7</version>
     </dependency>
+    <dependency>
+	  <groupId>com.googlecode.htmlcompressor</groupId>
+	  <artifactId>htmlcompressor</artifactId>
+	  <version>1.5.2</version>
+    </dependency>
   </dependencies>
   
   <build>  

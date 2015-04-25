@@ -1,7 +1,9 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://htmlcompressor.googlecode.com/taglib/compressor" prefix="compress" %>
 
 <html>
+  <compress:html removeComments="true">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="${activeUri.metaDescription}">
@@ -28,6 +30,7 @@
     <c:import url="/WEB-INF/jsp/shared/footer.jsp" />
     
   </body>
+  </compress:html>
 </html>
 
 <link rel="stylesheet" type="text/css" href="/wro/all.css" />
