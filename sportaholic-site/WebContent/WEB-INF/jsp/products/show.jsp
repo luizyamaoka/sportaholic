@@ -19,7 +19,7 @@
                   Produto não disponível para compra
                 </div>
               </c:when>
-              <c:when test="${product.inStock <= 0}">w
+              <c:when test="${product.inStock <= 0}">
                 <div style="background-color: #eeeeee; padding: 30px 30px; font-size: 14px;">
                   Produto sem estoque
                 </div>
