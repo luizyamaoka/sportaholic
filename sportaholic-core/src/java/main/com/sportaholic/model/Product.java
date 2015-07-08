@@ -51,6 +51,9 @@ public class Product {
 	@Column(name="meli_url")
 	private String meliUrl;
 	
+	@Column(name="pagseguro_id")
+	private String pagseguroId;
+	
 	@ManyToOne
 	@JoinColumn(name="brand_id")
 	private Brand brand;
@@ -201,6 +204,14 @@ public class Product {
 
 	public void setMeliUrl(String meliUrl) {
 		this.meliUrl = meliUrl;
+	}
+
+	public String getPagseguroId() {
+		return pagseguroId;
+	}
+
+	public void setPagseguroId(String pagseguroId) {
+		this.pagseguroId = pagseguroId;
 	}
 	
 }

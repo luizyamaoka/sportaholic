@@ -24,8 +24,21 @@
                   Produto sem estoque
                 </div>
               </c:when>
+              <c:when test="${empty product.pagseguroId}">
+                <div style="background-color: #eeeeee; padding: 30px 30px; font-size: 14px;">
+                  Produto não disponível para compra
+                </div>
+              </c:when>
               <c:otherwise>
-                <a href="${product.meliUrl}" class="btn-big" role="button" target="blank">Comprar pelo Mercado Livre</a>
+                <!-- a href="${product.meliUrl}" class="btn-big" role="button" target="blank">Comprar pelo Mercado Livre</a-->
+				
+				<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+				<form action="https://pagseguro.uol.com.br/checkout/v2/cart.html?action=add" method="post">
+					<!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+					<input type="hidden" name="itemCode" value="${product.pagseguroId}" />
+					<input type="submit" class="btn-big" value="Comprar" />
+				</form>
+				<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
               </c:otherwise>
             </c:choose>
             
