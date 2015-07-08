@@ -24,6 +24,19 @@ public class ProductDao extends GenericDao<Product, Integer> {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> getAll() throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Product.class);
+		criteria.createAlias("brand", "b");
+		criteria.addOrder(Order.asc("b.name"));
+		criteria.addOrder(Order.asc("name"));
+		List<Product> objects = criteria.list();
+		return objects;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Product> getActiveBySetPaginated(Integer sportId, Integer productTypeId, int pageNumber, int pageSize) throws Exception {
 		Session session = null;
 		session = this.sessionFactory.getCurrentSession();

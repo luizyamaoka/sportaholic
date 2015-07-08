@@ -19,6 +19,7 @@ public class ProductDto {
 	private List<Integer> productTypeIds;
 	private List<Integer> productSportIds;
 	private String meliUrl;
+	private String pagseguroId;
 	
 	private Integer uriId;
 	private String friendlyUri;
@@ -127,6 +128,12 @@ public class ProductDto {
 	}
 	public void setImageFile(MultipartFile imageFile) {
 		this.imageFile = imageFile;
+	}
+	public String getPagseguroId() {
+		return pagseguroId;
+	}
+	public void setPagseguroId(String pagseguroId) {
+		this.pagseguroId = pagseguroId;
 	}
 	
 }

@@ -50,6 +50,7 @@ public class ProductDtoTransformer {
 		product.setInStock(productDto.getInStock());
 		product.setBrand(this.brandDao.get(productDto.getBrandId()));
 		product.setMeliUrl(productDto.getMeliUrl());
+		product.setPagseguroId(productDto.getPagseguroId());
 		
 		List<ProductIsType> productIsTypes = new ArrayList<ProductIsType>();
 		for (Integer productTypeId : productDto.getProductTypeIds()) {
@@ -98,6 +99,7 @@ public class ProductDtoTransformer {
 		productDto.setInStock(product.getInStock());
 		productDto.setBrandId(product.getBrand().getId());
 		productDto.setMeliUrl(product.getMeliUrl());
+		productDto.setPagseguroId(product.getPagseguroId());
 		
 		List<Integer> productTypeIds = new ArrayList<Integer>();
 		for (ProductIsType productIsType : product.getProductIsTypes()) {
