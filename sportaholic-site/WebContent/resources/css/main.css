@@ -345,3 +345,12 @@ body {
         text-align: center;
     }
 }
+
+#order-confirmation {
+	font-size: 16px;
+  	line-height: 2em;
+}
+
+#order-confirmation > div > p > strong {
+	color: #ff6600;
+}

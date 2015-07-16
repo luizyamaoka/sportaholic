@@ -68,6 +68,7 @@
         <value>classpath:/tiles/clients.xml</value>
         <value>classpath:/tiles/errors.xml</value>
         <value>classpath:/tiles/products.xml</value>
+        <value>classpath:/tiles/purchases.xml</value>
         <value>classpath:/tiles/sports.xml</value>
         <value>classpath:/tiles/static-pages.xml</value>
       </list>
