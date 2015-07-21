@@ -1,17 +1,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       
-      <div class="row">
+      <div itemscope itemtype="http://schema.org/Product" class="row">
         <div class="col-sm-6 col-xs-12 product-main-image">
           <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>${product.image}" alt="${product.name}" style="max-width: 100%; max-height: 100%;" />
         </div>
         <div class="col-sm-6 col-xs-12 product-description">
-          <h2>${product.brand.name}</h2>
-          <h1>${product.name}</h1>
-          <p>${product.description}</p>
-          <p>
-            R$ <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0.00" minFractionDigits="2" maxFractionDigits="2"/>
-          </p>
+          <span itemprop="brand" itemscope itemtype="http://schema.org/Brand">
+            <h2 itemprop="name">${product.brand.name}</h2>
+          </span>
+          <h1 itemprop="name">${product.name}</h1>
+          <p itemprop="description">${product.description}</p>
+          <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <p itemprop="price">
+              R$ <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0.00" minFractionDigits="2" maxFractionDigits="2"/>
+            </p>
+          </span>
           <p style="margin-top: 50px;">
             <c:choose>
               <c:when test="${not product.isActive}">
