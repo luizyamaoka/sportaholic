@@ -18,8 +18,8 @@
 
       <div class="col-sm-9 col-sm-push-3">
       <div class="article" itemscope itemtype="http://schema.org/Article">
-	    <h1 itemprop="name">${article.title}</h1>
-	    <h3>${article.subtitle}</h3>
+	    <h1 itemprop="headline">${article.title}</h1>
+	    <h3 itemprop="alternativeHeadline">${article.subtitle}</h3>
 	    
 	    <div class="author">
 	      Por <a href="${uriService.getFriendlyUri(article.author.uri)}"><span itemprop="author" itemscope itemtype="http://schema.org/Person">${article.author.name}</span></a>
