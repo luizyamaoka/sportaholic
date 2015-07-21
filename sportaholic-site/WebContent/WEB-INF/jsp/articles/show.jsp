@@ -17,19 +17,19 @@
     <div class="row">
 
       <div class="col-sm-9 col-sm-push-3">
-      <div class="article">
-	    <h1>${article.title}</h1>
+      <div class="article" itemscope itemtype="http://schema.org/Article">
+	    <h1 itemprop="name">${article.title}</h1>
 	    <h3>${article.subtitle}</h3>
 	    
 	    <div class="author">
-	      Por <a href="${uriService.getFriendlyUri(article.author.uri)}">${article.author.name}</a>
-	      em <fmt:formatDate value="${article.publishedAt}" pattern="dd/MM/yyyy HH:mm" timeZone="Brazil/East"/>
+	      Por <a href="${uriService.getFriendlyUri(article.author.uri)}"><span itemprop="author" itemscope itemtype="http://schema.org/Person">${article.author.name}</span></a>
+	      em <span itemprop="datePublished" content="<fmt:formatDate value="${article.publishedAt}" pattern="yyyy-MM-dd" timeZone="Brazil/East"/>T<fmt:formatDate value="${article.publishedAt}" pattern="HH:mm" timeZone="Brazil/East"/>"><fmt:formatDate value="${article.publishedAt}" pattern="dd/MM/yyyy HH:mm" timeZone="Brazil/East"/></span>
 	    </div>
 	    <br />
 	    <div class="fb-like" data-href="http://www.sportaholic.com.br${uriService.getFriendlyUri(article.uri)}" 
         data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
 		<br /><br />
-		<div class="content">
+		<div class="content" itemprop="articleBody">
           ${article.content}
         </div>
         
