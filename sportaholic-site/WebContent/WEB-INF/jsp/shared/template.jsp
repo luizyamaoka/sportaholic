@@ -2,16 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://htmlcompressor.googlecode.com/taglib/compressor" prefix="compress" %>
 
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
   <compress:html removeComments="true">
   <head>
-    <meta charset="utf-8">
-    <meta name="description" content="${activeUri.metaDescription}">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="description" content="${activeUri.metaDescription}" />
     <meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" />
     <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico'/>
     <title>${activeUri.name} | Sportaholic</title>
+    <link rel="stylesheet" type="text/css" href="/wro/all.css" />
 	<script type="text/javascript" src="/wro/jquery.js"></script>
-	<script async type="text/javascript" src="/wro/all.js"></script>
+	<script async="async" type="text/javascript" src="/wro/all.js"></script>
 	
   </head>
   <body>
@@ -32,5 +34,3 @@
   </body>
   </compress:html>
 </html>
-
-<link rel="stylesheet" type="text/css" href="/wro/all.css" />

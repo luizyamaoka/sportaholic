@@ -38,12 +38,12 @@
     
 
     <a href="/">
-      <img id="logo" src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>logo.png" height="40px">
+      <img id="logo" src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>logo.png" alt="Sportaholic">
     </a>
     
 </div>
   <div class="list-group visible-xs">
-    <div class="collapse" id="menu" aria-expanded="false">
+    <div class="collapse" id="menu" aria-expanded="false" role="menu">
       <security:authorize access="!isAuthenticated()">
         <a href="${uriService.getFriendlyUri('/clients/new')}" class="list-group-item">Cadastre-se</a>
         <a href="${uriService.getFriendlyUri('/login')}" class="list-group-item">Login</a>

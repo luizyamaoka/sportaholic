@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <h1 style="margin-bottom: 40px;">
-        <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>logo.png" style="max-height: 70px; max-width: 80%;">
+        <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>logo.png" style="max-height: 70px; max-width: 80%;" alt="Sportaholic">
       </h1>
     </div>
     <div class="col-xs-12 col-sm-6">

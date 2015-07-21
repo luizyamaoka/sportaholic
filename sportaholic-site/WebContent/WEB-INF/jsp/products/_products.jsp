@@ -10,7 +10,7 @@
   <c:forEach var="product" items="${products}">
     <div class="col-sm-6 col-md-4 col-lg-3">
       <div class="product-carousel">
-        <img class="product-image" src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>${product.image}" data-holder-rendered="true">
+        <img class="product-image" src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>${product.image}" data-holder-rendered="true" alt="${product.name}">
         <div class="product-info">
           <h4 class="product-brand">${product.brand.name}</h4>
           <h4 class="product-name">${product.name}</h4>
