@@ -18,7 +18,11 @@
             R$ <fmt:formatNumber value="${product.price}" type="number" pattern="#,##0.00" minFractionDigits="2" maxFractionDigits="2"/>
           </p>
         </div>
-        <p style="text-align: center;"><a href="${uriService.getFriendlyUri(product.uri)}" class="btn-medium" role="button">Comprar</a></p>
+
+       	<a href="${uriService.getFriendlyUri(product.uri)}" class="btn form-control btn-medium" role="button">
+       		Confira
+       		<span class="pull-right"><span class="glyphicon glyphicon-play"></span></span>
+       	</a>
       </div>
     </div>
   </c:forEach>

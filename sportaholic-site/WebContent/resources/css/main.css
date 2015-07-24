@@ -45,43 +45,35 @@ body {
   margin: 10px 0;
 }
 
-.btn-big {
-  background-color: #ffffff;
-  font-size: 16px;
-  color: #ff6600;
+.btn-purchase {
+  background-color: #ff6600;
+  border-color: #ff6600;
+  color: #ffffff;
   font-weight: bold;
-  border: 1px solid #ff6600;
-  border-radius: 5px 5px 5px 5px;
-  padding: 15px 40px 15px 40px;
 }
 
-.btn-big:hover{
-  font-size: 16px;
-  color: #fff;
-  font-weight: bold;
-  background-color: #ff6600;
-  text-decoration: none;
+.btn-purchase:hover{
+  background-color: #ff7706;
+  color: #ffffff;
 }
 
 .btn-medium {
-  font-size: 14px;
   color: #ff6600;
   font-weight: bold;
-  border: 1px solid #ff6600;
-  border-radius: 5px 5px 5px 5px;
-  padding: 10px 30px;
+  border-color: #ff6600;
+  background-color: #ffffff
 }
 
 .btn-medium:hover{
-  font-size: 14px;
-  color: #fff;
+  color: #ffffff;
   font-weight: bold;
   background-color: #ff6600;
-  text-decoration: none;
+  
 }
 .thumbnail {
   padding-bottom: 30px;
   height: 400px;
+  border: 0px;
 }
 .thumbnail > .caption {
   overflow: hidden;

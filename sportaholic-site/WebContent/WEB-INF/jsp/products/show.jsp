@@ -40,7 +40,18 @@
 				<form action="https://pagseguro.uol.com.br/checkout/v2/cart.html?action=add" method="post">
 					<!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
 					<input type="hidden" name="itemCode" value="${product.pagseguroId}" />
-					<input type="submit" class="btn-big" value="Comprar" />
+					
+					<div class="row">
+					<div class="col-lg-9">
+					<button class="btn btn-purchase form-control">
+				      Adicionar à sacola
+				      <span class="pull-right">
+				        <span class="glyphicon glyphicon-play">
+				        </span>
+				      </span>
+				    </button>  
+				    </div>
+				    </div>
 				</form>
 				<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
               </c:otherwise>
