@@ -11,7 +11,7 @@
 
 <h3 class="page-header">Produtos mais vendidos</h3>
 
-<c:import url="/WEB-INF/jsp/products/_products.jsp" />
+<c:import url="/WEB-INF/jsp/products/_product_carousel.jsp" />
 
 <nav>
   <ul class="pager">

@@ -92,6 +92,33 @@ body {
   overflow: hidden;
 }
 
+.product-carousel-control {
+	position: absolute; 
+	top: 0; 
+	bottom: 0; 
+	left: 0; 
+	font-size: 25px; 
+	color: #cccccc;
+}
+
+.product-carousel-control:hover {
+	color: #ff6600;
+}
+
+.product-carousel-control-next {
+	left: auto;
+	right: 0;
+}
+
+.product-carousel-control > .product-carousel-arrow {
+	position: absolute; 
+	top: 43%;
+}
+
+.product-carousel-control-next > .product-carousel-arrow {
+	right: 99%;
+}
+
 .product-carousel {
   height: 400px;
   display: block;
