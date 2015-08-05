@@ -96,7 +96,7 @@ public class SportController {
 			String currentPageString = request.getParameter("page");
 			int currentPage = currentPageString == null || currentPageString.equals("") ? 1 : Integer.valueOf(currentPageString);
 			
-			long pages = this.productService.getActiveBySetPages(null, null, 12);
+			long pages = this.productService.getActiveBySetPages(id, null, 12);
 			
 			ModelAndView modelAndView = new ModelAndView("products/index");			
 			modelAndView.addObject("currentPage", currentPage);
