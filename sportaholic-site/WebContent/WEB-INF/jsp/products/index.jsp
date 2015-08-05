@@ -2,7 +2,10 @@
 
 <div class="row">
   <div class="col-sm-9 col-sm-push-3">
+    
+    <c:import url="/WEB-INF/jsp/shared/pagination.jsp" />
     <c:import url="/WEB-INF/jsp/products/_products.jsp" />
+    <c:import url="/WEB-INF/jsp/shared/pagination.jsp" />
   </div>
 
   <div class="col-sm-3 col-sm-pull-9">

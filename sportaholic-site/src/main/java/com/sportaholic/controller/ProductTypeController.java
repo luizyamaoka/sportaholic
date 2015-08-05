@@ -1,5 +1,7 @@
 package com.sportaholic.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,11 +31,20 @@ public class ProductTypeController {
 	}
 	
 	@RequestMapping("/{id}")
-	public ModelAndView getProductTypes(@PathVariable Integer id) {
+	public ModelAndView getProductTypes(@PathVariable Integer id, HttpServletRequest request) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("products/index");
+			String currentPageString = request.getParameter("page");
+			int currentPage = currentPageString == null || currentPageString.equals("") ? 1 : Integer.valueOf(currentPageString);
+			
+			long pages = this.productService.getActiveBySetPages(null, null, 12);
+			
+			ModelAndView modelAndView = new ModelAndView("products/index");			
+			modelAndView.addObject("currentPage", currentPage);
+			modelAndView.addObject("firstPage", currentPage - 2 < 1 ? 1 : currentPage - 2);
+			modelAndView.addObject("lastPage", currentPage + 2 > pages ? pages : currentPage + 2);
+			
 			ProductType productType = this.productTypeService.get(id);
-			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(null, id, 1, 12));
+			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(null, id, currentPage, 12));
 			modelAndView.addObject("sports", this.sportService.getEagerBySet(productType.getProductCategory().getSport().getId()));
 			
 			return modelAndView;

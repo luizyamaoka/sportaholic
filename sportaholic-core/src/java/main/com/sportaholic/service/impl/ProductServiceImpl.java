@@ -73,4 +73,11 @@ public class ProductServiceImpl implements ProductService {
 		return this.productDao.getActiveBySetPaginated(sportId, productTypeId, pageNumber, pageSize);
 	}
 
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public long getActiveBySetPages(Integer sportId, Integer productTypeId,
+			int pageSize) throws Exception {
+		return this.productDao.getActiveBySetPages(sportId, productTypeId, pageSize);
+	}
+
 }

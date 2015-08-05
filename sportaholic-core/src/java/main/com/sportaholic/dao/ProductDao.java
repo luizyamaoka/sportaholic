@@ -67,9 +67,44 @@ public class ProductDao extends GenericDao<Product, Integer> {
 		criteria.add(Restrictions.eq("isActive", true));
 		criteria.setFirstResult((pageNumber - 1) * pageSize);
 		criteria.setMaxResults(pageSize);
-		criteria.addOrder(Order.asc("name"));
+		criteria.addOrder(Order.desc("inStock"));
+		criteria.addOrder(Order.desc("createdAt"));
 		List<Product> objects = criteria.list();
 		return objects;
+	}
+	
+	public long getActiveBySetPages(Integer sportId, Integer productTypeId, int pageSize) throws Exception {
+		Session session = null;
+		session = this.sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Product.class);
+
+		if(sportId != null) {
+			criteria.createAlias("productIsSports", "pis");
+			criteria.createAlias("pis.sport", "s");
+			criteria.add(Restrictions.eq("s.id", sportId));
+		}
+		if (productTypeId != null) {
+			if (sportId == null) {
+				criteria.createAlias("productIsTypes", "pit");
+				criteria.createAlias("pit.productType", "pt");
+				criteria.add(Restrictions.eq("pt.id", productTypeId));
+			} else {
+				DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Product.class);
+				detachedCriteria.createAlias("productIsTypes", "pit");
+				detachedCriteria.createAlias("pit.productType", "pt");
+				detachedCriteria.add(Restrictions.eq("pt.id", productTypeId));
+				detachedCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+				detachedCriteria.setProjection(Projections.property("id"));
+				
+				criteria.add(Subqueries.propertyIn("id", detachedCriteria));
+			}
+		}
+		
+		criteria.setProjection(Projections.rowCount());
+		
+		criteria.add(Restrictions.eq("isActive", true));
+		long rows = (long) criteria.uniqueResult();
+		return (rows + pageSize - 1) / pageSize;
 	}
 
 }

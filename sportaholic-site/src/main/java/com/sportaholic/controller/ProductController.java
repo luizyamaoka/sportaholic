@@ -2,6 +2,8 @@ package com.sportaholic.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -65,10 +67,19 @@ public class ProductController {
 	}
 	
 	@RequestMapping("")
-	public ModelAndView index() {
+	public ModelAndView index(HttpServletRequest request) {
 		try {
+			String currentPageString = request.getParameter("page");
+			int currentPage = currentPageString == null || currentPageString.equals("") ? 1 : Integer.valueOf(currentPageString);
+			
+			long pages = this.productService.getActiveBySetPages(null, null, 12);
+			
 			ModelAndView modelAndView = new ModelAndView("products/index");			
-			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(null, null, 1, 12));
+			modelAndView.addObject("currentPage", currentPage);
+			modelAndView.addObject("firstPage", currentPage - 2 < 1 ? 1 : currentPage - 2);
+			modelAndView.addObject("lastPage", currentPage + 2 > pages ? pages : currentPage + 2);
+			
+			modelAndView.addObject("products", this.productService.getActiveBySetPaginated(null, null, currentPage, 12));
 			modelAndView.addObject("sports", this.sportService.getEagerBySet(null));
 			return modelAndView;
 		} catch (Exception e) {

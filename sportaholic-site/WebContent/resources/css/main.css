@@ -378,3 +378,17 @@ body {
 #order-confirmation > div > p > strong {
 	color: #ff6600;
 }
+
+.pagination > li > a {
+	color: #ff6600;
+}
+
+.pagination > li > a:hover {
+	color: #ff6600;
+}
+
+.pagination > .active > a {
+	background-color: #ff6600;
+  	border-color: #ff6600;
+  	color: #fff;
+}

@@ -23,4 +23,6 @@ public interface ProductService {
 	
 	public Product getEager(Integer id) throws Exception;
 	
+	public long getActiveBySetPages(Integer sportId, Integer productTypeId, int pageSize) throws Exception;
+	
 }
