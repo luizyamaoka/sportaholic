@@ -12,8 +12,12 @@
     </div>
 
    	<a href="${uriService.getFriendlyUri(product.uri)}" class="btn form-control btn-medium" role="button">
-   		Confira
-   		<span class="pull-right"><span class="glyphicon glyphicon-play"></span></span>
+   	  <span class="col-xs-10">
+   		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confira
+   	  </span>
+   	  <span class="col-xs-2">
+   	    <span class="glyphicon glyphicon-play"></span>
+   	  </span>
    	</a>
   </div>
 </div>
