@@ -116,7 +116,7 @@ public class AdmBrandServiceImpl implements AdmBrandService {
 		}
 		if (brandDto.getFriendlyUri() != null) {
 			Uri uri = this.uriDao.getByFriendlyUri(brandDto.getFriendlyUri());
-			if (uri != null && uri.getId() != brandDto.getUriId()) {
+			if (uri != null && !uri.getId().equals(brandDto.getUriId())) {
 				status.set(0, "error");
 				status.add("friendlyUri.existant");
 			}

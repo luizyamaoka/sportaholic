@@ -101,7 +101,7 @@ public class AdmAuthorServiceImpl implements AdmAuthorService {
 		}
 		if (authorDto.getFriendlyUri() != null) {
 			Uri uri = this.uriDao.getByFriendlyUri(authorDto.getFriendlyUri());
-			if (uri != null && uri.getId() != authorDto.getUriId()) {
+			if (uri != null && !uri.getId().equals(authorDto.getUriId())) {
 				status.set(0, "error");
 				status.add("friendlyUri.existant");
 			}

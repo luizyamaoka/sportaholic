@@ -109,7 +109,7 @@ public class AdmUriServiceImpl implements AdmUriService {
 		}
 		if (uriDto.getFriendlyUri() != null) {
 			Uri uri = this.uriDao.getByFriendlyUri(uriDto.getFriendlyUri());
-			if (uri != null && uri.getId() != uriDto.getUriId()) {
+			if (uri != null && !uri.getId().equals(uriDto.getUriId())) {
 				status.set(0, "error");
 				status.add("friendlyUri.existant");
 			}

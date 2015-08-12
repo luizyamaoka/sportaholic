@@ -192,7 +192,7 @@ public class AdmProductServiceImpl extends ProductServiceImpl implements
 		}
 		if (productDto.getFriendlyUri() != null) {
 			Uri uri = this.uriDao.getByFriendlyUri(productDto.getFriendlyUri());
-			if (uri != null && uri.getId() != productDto.getUriId()) {
+			if (uri != null && !uri.getId().equals(productDto.getUriId())) {
 				status.set(0, "error");
 				status.add("friendlyUri.existant");
 			}

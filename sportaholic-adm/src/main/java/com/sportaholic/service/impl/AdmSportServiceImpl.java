@@ -116,7 +116,7 @@ public class AdmSportServiceImpl implements AdmSportService {
 		}
 		if (sportDto.getFriendlyUri() != null) {
 			Uri uri = this.uriDao.getByFriendlyUri(sportDto.getFriendlyUri());
-			if (uri != null && uri.getId() != sportDto.getUriId()) {
+			if (uri != null && !uri.getId().equals(sportDto.getUriId())) {
 				status.set(0, "error");
 				status.add("friendlyUri.existant");
 			}

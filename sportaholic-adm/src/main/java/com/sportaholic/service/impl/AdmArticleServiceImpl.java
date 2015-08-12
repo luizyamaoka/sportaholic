@@ -204,7 +204,7 @@ public class AdmArticleServiceImpl implements AdmArticleService {
 		}
 		if (articleDto.getFriendlyUri() != null) {
 			Uri uri = this.uriDao.getByFriendlyUri(articleDto.getFriendlyUri());
-			if (uri != null && uri.getId() != articleDto.getUriId()) {
+			if (uri != null && !uri.getId().equals(articleDto.getUriId())) {
 				status.set(0, "error");
 				status.add("friendlyUri.existant");
 			}
