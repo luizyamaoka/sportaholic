@@ -43,14 +43,11 @@
 					
 					<div class="row">
 					<div class="col-lg-9">
-					<button class="btn btn-purchase form-control">
-					  <span class="col-xs-10">
-				        Adicionar à sacola
-				      </span>
-				      <span class="col-xs-2">
-				        <span class="glyphicon glyphicon-play">
-				        </span>
-				      </span>
+					<button class="btn btn-purchase form-control" style="white-space: inherit ! important;">
+				      Adicionar à sacola
+				      <span class="pull-right">
+                        <span class="glyphicon glyphicon-play"></span>
+                      </span>
 				    </button>  
 				    </div>
 				    </div>
