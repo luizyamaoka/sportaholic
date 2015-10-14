@@ -8,6 +8,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/sportaholic-adm/build/classes"/>
-        <property name="context-root" value="/"/>
+        <property name="context-root" value="sportaholic-adm"/>
     </wb-module>
 </project-modules>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+  <definition name="sports/index" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/sports/index.jsp" />
+  </definition>
+  
+  <definition name="sports/edit" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/sports/edit.jsp" />
+  </definition>
+  
+  <definition name="sports/new" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/sports/new.jsp" />
+  </definition>
+	
+</tiles-definitions>

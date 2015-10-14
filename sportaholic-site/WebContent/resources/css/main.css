@@ -270,6 +270,29 @@ body {
 	color: #4d4d4d;
 }
 
+.submenu {
+	display: none;
+	z-index: 1000;
+	background-color: #ffffff;
+	padding: 20px 0; 
+	position: absolute; 
+	border-top: 0px; 
+	border: 1px solid #eee;
+}
+
+.submenu > .submenu-item {
+	text-align: center; 
+	margin-bottom: 10px;
+}
+
+a#sports-menu:hover + .submenu {
+	display: block;
+}
+
+.submenu:hover {
+	display: block;
+}
+
 #about-us {
   text-align: center;
 }

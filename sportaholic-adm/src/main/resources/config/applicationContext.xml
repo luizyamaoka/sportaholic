@@ -20,12 +20,6 @@
 
  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
-  <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-    <property name="prefix" value="/WEB-INF/jsp/" />
-    <property name="suffix" value=".jsp" />
-  </bean>
-
   <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
   	p:driverClassName="org.postgresql.Driver" 
   	p:url="jdbc:postgresql://54.149.164.253:5432/sportaholic" p:username="sportaholic" p:password="sportaholic" />--> 
@@ -59,5 +53,26 @@
     <property name="sessionFactory" ref="sessionFactory" />
   </bean>
   <tx:annotation-driven transaction-manager="transactionManager" />
+  
+  <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+    <property name="definitions">
+      <list>
+        <value>classpath:/tiles/templates.xml</value>
+        <value>classpath:/tiles/amazon-s3-files.xml</value>
+        <value>classpath:/tiles/article-types.xml</value>
+        <value>classpath:/tiles/articles.xml</value>
+        <value>classpath:/tiles/authors.xml</value>
+        <value>classpath:/tiles/brands.xml</value>
+        <value>classpath:/tiles/errors.xml</value>
+        <value>classpath:/tiles/product-categories.xml</value>
+        <value>classpath:/tiles/product-types.xml</value>
+        <value>classpath:/tiles/products.xml</value>
+        <value>classpath:/tiles/sports.xml</value>
+        <value>classpath:/tiles/static-pages.xml</value>
+        <value>classpath:/tiles/uris.xml</value>
+      </list>
+    </property>
+  </bean>
+  <bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
 
  </beans>

@@ -63,6 +63,25 @@
     <a href="${uriService.getFriendlyUri('/sports')}">Esportes</a>
     <a href="${uriService.getFriendlyUri('/brands')}">Marcas</a>
     <a href="${uriService.getFriendlyUri('/about-us')}">Quem somos</a>
+    <a href="#" id="sports-menu">Esportes</a>
+    <div class="submenu row container">
+      <div class="col-md-3 col-sm-6 submenu-item">
+        <img src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/sports/swimming.png" style="width: 100%;" />
+        <a href="#">Natação</a>
+      </div>
+      <div class="col-md-3 col-sm-6 submenu-item">
+        <img src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/sports/swimming.png" style="width: 100%;" />
+        <a href="#">Natação</a>
+      </div>
+      <div class="col-md-3 col-sm-6 submenu-item">
+      <img src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/sports/swimming.png" style="width: 100%;" />
+        <a href="#">Natação</a>
+      </div>
+      <div class="col-md-3 col-sm-6 submenu-item">
+      <img src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/sports/swimming.png" style="width: 100%;" />
+        <a href="#">Natação</a>
+      </div>
+    </div>
 
   </div>
 </div>
@@ -72,6 +91,10 @@
     $(".mobile-menu").click(function(){
 	  $("#menu").toggle();
 	});
+    
+    $("#sports-menu").click(function(){
+    	$(".submenu").css({ display: "block" });
+    });
   });
 </script>
 
