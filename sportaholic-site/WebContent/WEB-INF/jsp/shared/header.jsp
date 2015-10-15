@@ -60,28 +60,64 @@
 <div id="main-menu">
   <div class="container">
     <a href="/"><span class="glyphicon glyphicon-home"></span></a> 
-    <a href="${uriService.getFriendlyUri('/sports')}">Esportes</a>
-    <a href="${uriService.getFriendlyUri('/brands')}">Marcas</a>
-    <a href="${uriService.getFriendlyUri('/about-us')}">Quem somos</a>
-    <a href="#" id="sports-menu">Esportes</a>
-    <div class="submenu row container">
+    <a href="${uriService.getFriendlyUri('/sports')}" id="sports-menu">Esportes</a>
+    <div class="submenu row container hidden-sm hidden-xs">
       <div class="col-md-3 col-sm-6 submenu-item">
-        <img src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/sports/swimming.png" style="width: 100%;" />
-        <a href="#">Natação</a>
+        <a href="${uriService.getFriendlyUri('/sports/3')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>sports/ciclism.png" style="width: 100%;" />
+        </a>
       </div>
       <div class="col-md-3 col-sm-6 submenu-item">
-        <img src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/sports/swimming.png" style="width: 100%;" />
-        <a href="#">Natação</a>
+        <a href="${uriService.getFriendlyUri('/sports/2')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>sports/running.png" style="width: 100%;" />
+        </a>
       </div>
       <div class="col-md-3 col-sm-6 submenu-item">
-      <img src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/sports/swimming.png" style="width: 100%;" />
-        <a href="#">Natação</a>
+        <a href="${uriService.getFriendlyUri('/sports/1')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>sports/swimming.png" style="width: 100%;" />
+        </a>
       </div>
       <div class="col-md-3 col-sm-6 submenu-item">
-      <img src="https://s3-sa-east-1.amazonaws.com/sportaholic/images/sports/swimming.png" style="width: 100%;" />
-        <a href="#">Natação</a>
+        <a href="${uriService.getFriendlyUri('/sports/4')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>sports/squash.png" style="width: 100%;" />
+        </a>
       </div>
     </div>
+    <a href="${uriService.getFriendlyUri('/brands')}" id="brands-menu">Marcas</a>
+    <div class="brands-submenu row container hidden-sm hidden-xs">
+      <div class="col-md-2 submenu-item">
+        <a href="${uriService.getFriendlyUri('/brands/5')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>brands/dunlop.png" style="width: 100%;" />
+        </a>
+      </div>
+      <div class="col-md-2 submenu-item">
+        <a href="${uriService.getFriendlyUri('/brands/9')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>brands/karakal.png" style="width: 100%;" />
+        </a>
+      </div>
+      <div class="col-md-2 submenu-item">
+        <a href="${uriService.getFriendlyUri('/brands/2')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>brands/malmsten.png" style="width: 100%;" />
+        </a>
+      </div>
+      <div class="col-md-2 submenu-item">
+        <a href="${uriService.getFriendlyUri('/brands/8')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>brands/oliver.png" style="width: 100%;" />
+        </a>
+      </div>
+      <div class="col-md-2 submenu-item">
+        <a href="${uriService.getFriendlyUri('/brands/3')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>brands/speedo.png" style="width: 100%;" />
+        </a>
+      </div>
+      <div class="col-md-2 submenu-item">
+        <a href="${uriService.getFriendlyUri('/brands/7')}">
+          <img src="<%=com.sportaholic.EnvironmentConstants.IMAGES_URL%>brands/diversos.png" style="width: 100%;" />
+        </a>
+      </div>
+    </div>
+    <a href="${uriService.getFriendlyUri('/about-us')}">Quem somos</a>
+    
 
   </div>
 </div>
@@ -91,10 +127,6 @@
     $(".mobile-menu").click(function(){
 	  $("#menu").toggle();
 	});
-    
-    $("#sports-menu").click(function(){
-    	$(".submenu").css({ display: "block" });
-    });
   });
 </script>
 
