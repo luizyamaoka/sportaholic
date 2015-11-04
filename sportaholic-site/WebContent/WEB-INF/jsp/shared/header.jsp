@@ -44,6 +44,8 @@
 </div>
   <div class="list-group visible-xs">
     <div class="collapse" id="menu" aria-expanded="false" role="menu">
+      <a href="${uriService.getFriendlyUri('/sports')}" class="list-group-item">Esportes</a>
+      <a href="${uriService.getFriendlyUri('/brands')}" class="list-group-item">Marcas</a>
       <security:authorize access="!isAuthenticated()">
         <a href="${uriService.getFriendlyUri('/clients/new')}" class="list-group-item">Cadastre-se</a>
         <a href="${uriService.getFriendlyUri('/login')}" class="list-group-item">Login</a>
@@ -60,7 +62,7 @@
 <div id="main-menu">
   <div class="container">
     <a href="/"><span class="glyphicon glyphicon-home"></span></a> 
-    <a href="${uriService.getFriendlyUri('/sports')}" id="sports-menu">Esportes</a>
+    <a href="${uriService.getFriendlyUri('/sports')}" id="sports-menu" class="hidden-xs">Esportes</a>
     <div class="submenu row container hidden-sm hidden-xs">
       <div class="col-md-3 col-sm-6 submenu-item">
         <a href="${uriService.getFriendlyUri('/sports/3')}">
@@ -83,7 +85,7 @@
         </a>
       </div>
     </div>
-    <a href="${uriService.getFriendlyUri('/brands')}" id="brands-menu">Marcas</a>
+    <a href="${uriService.getFriendlyUri('/brands')}" id="brands-menu" class="hidden-xs">Marcas</a>
     <div class="brands-submenu row container hidden-sm hidden-xs">
       <div class="col-md-2 submenu-item">
         <a href="${uriService.getFriendlyUri('/brands/5')}">
