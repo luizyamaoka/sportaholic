@@ -118,6 +118,7 @@
         </a>
       </div>
     </div>
+    <a href="${uriService.getFriendlyUri('/products')}">Loja</a>
     <a href="${uriService.getFriendlyUri('/about-us')}">Quem somos</a>
     
 
