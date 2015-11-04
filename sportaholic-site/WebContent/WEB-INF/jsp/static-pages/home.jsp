@@ -21,7 +21,7 @@
 
 <h3 class="page-header">Últimos artigos</h3>
 
-<c:import url="/WEB-INF/jsp/articles/_articles.jsp" />
+<c:import url="/WEB-INF/jsp/articles/_article_carousel.jsp" />
 
 <nav>
   <ul class="pager">
