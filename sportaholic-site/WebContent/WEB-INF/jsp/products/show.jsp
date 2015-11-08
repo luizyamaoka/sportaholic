@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
       
       <div itemscope itemtype="http://schema.org/Product" class="row">
         <div class="col-sm-6 col-xs-12 product-main-image">
@@ -59,6 +60,67 @@
           </p>
         </div>
       </div>
+      
+      <c:if test="${not empty product.productComments}">
+        <h3 class="page-header">Avaliações</h3>
+      </c:if>
+	  
+	  <c:forEach var="comment" items="${product.productComments}">
+	    <div class="comment">
+	      <p>
+	        <c:set var="yellowStars" value="${comment.grade/20}" />
+	        <c:forEach var="i" begin="1" end="${yellowStars}">
+	          <span style="color: gold;">&#x2605;</span>
+	        </c:forEach>
+			<c:forEach var="i" begin="1" end="${5-yellowStars}">
+			  <span>&#9734;</span>
+			</c:forEach>
+	        
+	      </p>
+	      <p>${comment.content}</p>
+	      <p class="client">Por <a href="${uriService.getFriendlyUri(comment.client.uri)}">${comment.client.firstName} ${comment.client.lastName}</a> em <fmt:formatDate value="${comment.createdAt}" pattern="dd/MM/yyyy HH:mm" /></p>
+	    </div>
+	  </c:forEach>
+	  
+	  <h3 class="page-header">Avalie este produto</h3>
+	  
+	  <security:authorize access="isAuthenticated()">
+	    <div class="center-form">
+	      <form action="/product-comments/new" method="post" class="form-horizontal">
+	        <input type="hidden" name="productId" value="${product.id}">
+	        <div class="form-group">
+	          <label for="gradeInput" class="control-label col-sm-4 col-xs-12">Nota * </label>
+	          <div class="col-sm-8 col-xs-12">
+	            <fieldset class="rating">
+    			  <input type="radio" id="star5" name="grade" value="100" /><label for="star5" title="Perfeito!">5 stars</label>
+				  <input type="radio" id="star4" name="grade" value="80" /><label for="star4" title="Muito bom">4 stars</label>
+				  <input type="radio" id="star3" name="grade" value="60" /><label for="star3" title="Bom">3 stars</label>
+				  <input type="radio" id="star2" name="grade" value="40" /><label for="star2" title="Ruim">2 stars</label>
+				  <input type="radio" id="star1" name="grade" value="20" /><label for="star1" title="Péssimo">1 star</label>
+				</fieldset>
+			  </div>
+	        </div>
+	        <div class="form-group">
+	          <label for="contentInput" class="control-label col-sm-4 col-xs-12">Avaliação * </label>
+	          <div class="col-sm-8 col-xs-12">
+	            <textarea rows="3" class="form-control" name="content" placeholder="O que achou deste produto?" style="height:100px;" required></textarea>
+			  </div>
+	        </div>
+	        <div class="form-group">
+              <div class="col-sm-offset-4 col-sm-8 col-xs-12">
+                <input type="submit" class="form-control btn btn-primary" value="Avaliar">
+              </div>
+            </div>
+	      </form>
+	    </div>
+	  </security:authorize>
+	  <security:authorize access="!isAuthenticated()">
+	    <div class="article">
+	      <div class="secondary-text">
+	        <p>Quer deixar seu comentário? Efetue seu <a href="${uriService.getFriendlyUri('/login')}">login</a> ou, caso ainda não possua cadastro, <a href="${uriService.getFriendlyUri('/clients/new')}">crie uma conta</a>.</p>
+	      </div>
+	    </div>
+	  </security:authorize>
     
       <c:if test="${not empty products}">
       <h3 class="page-header">Você também pode gostar</h3>
