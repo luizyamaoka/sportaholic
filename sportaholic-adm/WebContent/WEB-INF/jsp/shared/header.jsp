@@ -38,6 +38,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="/uris">Uris</a></li>
             <li><a href="/amazon-s3-files">Imagens</a></li>
+            <li><a href="/orders/ask-for-review">Email Review</a></li>
           </ul>
         </li>
       </ul>
