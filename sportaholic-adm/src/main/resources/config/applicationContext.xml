@@ -26,7 +26,7 @@
 
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
   	p:driverClassName="org.postgresql.Driver" 
-  	p:rl="jdbc:postgresql://localhost:5432/sportaholic" p:username="sportaholic" p:password="sportaholic" />
+  	p:url="jdbc:postgresql://localhost:5432/sportaholic" p:username="sportaholic" p:password="sportaholic" />
 
   <!-- Hibernate Session Factory From Analytics DB -->
   <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" id="sessionFactory">
@@ -64,6 +64,7 @@
         <value>classpath:/tiles/authors.xml</value>
         <value>classpath:/tiles/brands.xml</value>
         <value>classpath:/tiles/errors.xml</value>
+        <value>classpath:/tiles/orders.xml</value>
         <value>classpath:/tiles/product-categories.xml</value>
         <value>classpath:/tiles/product-types.xml</value>
         <value>classpath:/tiles/products.xml</value>

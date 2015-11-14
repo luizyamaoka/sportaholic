@@ -171,7 +171,7 @@ public class ClientController {
 	        return modelAndView;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ModelAndView("error/unexpected-error");
+			return new ModelAndView("errors/unexpected-error");
 		}
     }
 	
@@ -198,7 +198,7 @@ public class ClientController {
 	        return "redirect:/clients/" + status.get(1) + "?edited";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error/unexpected-error";
+			return "errors/unexpected-error";
 		}
     }
 	
@@ -240,7 +240,7 @@ public class ClientController {
 	        return "redirect:/clients/edit-password?success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error/unexpected-error";
+			return "errors/unexpected-error";
 		}
     }
 	
@@ -272,7 +272,7 @@ public class ClientController {
 	        return "redirect:/clients/forgot-password?success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error/unexpected-error";
+			return "errors/unexpected-error";
 		}
     }
 	

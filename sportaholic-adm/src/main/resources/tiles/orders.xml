@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+  <definition name="orders/ask-for-review" extends="template">
+    <put-attribute name="body" value="/WEB-INF/jsp/orders/ask-for-review.jsp" />
+  </definition>
+	
+</tiles-definitions>

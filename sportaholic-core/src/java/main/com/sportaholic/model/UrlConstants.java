@@ -15,7 +15,8 @@ public final class UrlConstants {
 	public static final String URL_PRODUCT_TYPE = "/product-types";
 	public static final String URL_ARTICLE_TYPE = "/article-types";
 	public static final String URL_URI = "/uris";
-	public static final String URL_PRODUCT_COMMENT = "product-comments"; 
+	public static final String URL_PRODUCT_COMMENT = "/product-comments"; 
+	public static final String URL_ORDER = "/orders";
 
 	
 }
