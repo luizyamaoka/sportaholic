@@ -19,11 +19,13 @@ public class ProductCategoryDao extends GenericDao<ProductCategory, Integer> {
 		super(sessionFactory, ProductCategory.class);
 	}
 
-	public ProductCategory getByName(String name) throws Exception {
+	public ProductCategory getByName(String name, Integer sportId) throws Exception {
 		Session session = null;
 		session = this.sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(ProductCategory.class);
 		criteria.add(Restrictions.eq("name", name));
+		criteria.createAlias("sport", "s");
+		criteria.add(Restrictions.eq("s.id", sportId));
 		ProductCategory productCategory = (ProductCategory) criteria.uniqueResult();
 		return productCategory;
 	}
