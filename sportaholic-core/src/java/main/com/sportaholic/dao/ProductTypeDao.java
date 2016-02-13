@@ -17,11 +17,15 @@ public class ProductTypeDao extends GenericDao<ProductType, Integer> {
 		super(sessionFactory, ProductType.class);
 	}
 
-	public ProductType getByName(String name) throws Exception {
+	public ProductType getByName(String name, Integer productCategoryId) throws Exception {
 		Session session = null;
 		session = this.sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(ProductType.class);
+		criteria.createAlias("productCategory", "pc");
+		
 		criteria.add(Restrictions.eq("name", name));
+		criteria.add(Restrictions.eq("pc.id", productCategoryId));
+		
 		ProductType productType = (ProductType) criteria.uniqueResult();
 		return productType;
 	}

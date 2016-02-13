@@ -68,9 +68,9 @@ public class ProductTypeServiceImpl implements ProductTypeService {
 			status.set(0, "error");
 			status.add("name.required");
 		} else {
-			ProductType existantProductType = this.productTypeDao.getByName(productType.getName());
-			if (existantProductType != null && productType.getId() != existantProductType.getId()
-					&& productType.getProductCategory() == existantProductType.getProductCategory()) {
+			
+			ProductType existantProductType = this.productTypeDao.getByName(productType.getName(), productType.getProductCategory().getId());
+			if (existantProductType != null && productType.getId() != existantProductType.getId()) {
 				status.set(0, "error");
 				status.add("name.existant");
 			}
